@@ -4,6 +4,8 @@ Entry point: $ soh [CMD] [OPTS] input
 """
 import click
 
+from soh.b64 import b64decode
+from soh.b64 import b64encode
 from soh.uuid import uuid
 
 
@@ -15,6 +17,8 @@ def cli():
     pass
 
 
+cli.add_command(b64decode, name="b64d")
+cli.add_command(b64encode, name="b64e")
 cli.add_command(uuid, name="uuid")
 
 
