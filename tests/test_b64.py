@@ -8,14 +8,14 @@ from soh.b64 import b64encode
 from .test_util import check_clipboard_output
 
 
-@check_clipboard_output
-def test_b64e(sample_text, clip):
+# @check_clipboard_output
+def test_b64e(sample_text):  # , clip):
     runner = CliRunner()
 
     # build args
     args = [sample_text]
-    if clip is not None:
-        args += [clip]
+    # if clip is not None:
+    #     args += [clip]
 
     result = runner.invoke(b64encode, args)
 
@@ -27,14 +27,14 @@ def test_b64e(sample_text, clip):
     return result
 
 
-@check_clipboard_output
-def test_b64d(sample_b64, clip):
+# @check_clipboard_output
+def test_b64d(sample_b64):  # , clip):
     runner = CliRunner()
 
     # build args
     args = [sample_b64]
-    if clip is not None:
-        args += [clip]
+    # if clip is not None:
+    #     args += [clip]
 
     result = runner.invoke(b64decode, args)
 

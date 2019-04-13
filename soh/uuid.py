@@ -18,6 +18,8 @@ from soh.util import clipboard_output
 def uuid_(uuid_version, uuid_namespace, uuid_name, upper):
     """Generate UUIDs."""
     if uuid_namespace is not None:
+        if uuid_version not in (3, 5):
+            raise click.ClickException("Namespaces only valid for versions {3, 5}")
         namespaces = {
             "dns": uuid.NAMESPACE_DNS,
             "url": uuid.NAMESPACE_URL,

@@ -6,7 +6,7 @@ def clip(request):
     return request.param
 
 
-@pytest.fixture(params=[None, 1, 3, 4, 5])
+@pytest.fixture(params=[None, 1, 2, 3, 4, 5])
 def uuid_version(request):
     return request.param
 
@@ -16,7 +16,7 @@ def uuid_version_label(request):
     return request.param
 
 
-@pytest.fixture(params=[None, "dns", "url", "oid", "x500"])
+@pytest.fixture(params=[None, "dns", "url", "oid", "x500", "invalid"])
 def uuid_namespace(request):
     return request.param
 
