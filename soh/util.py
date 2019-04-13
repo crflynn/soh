@@ -5,6 +5,9 @@ import click
 import pyperclip
 
 
+COPIED_TO_CLIPBOARD_MESSAGE = " (copied to clipboard 📋)"
+
+
 def clipboard_output(func):
     @click.option("-c", "--clip", is_flag=True, help="copy to clipboard")
     @wraps(func)
@@ -13,7 +16,7 @@ def clipboard_output(func):
         value = func(*args, **kwargs)
         if clip:
             click.secho(value, fg="yellow", nl=False)
-            click.secho(" (copied to clipboard 📋)", fg="green")
+            click.secho(COPIED_TO_CLIPBOARD_MESSAGE, fg="green")
             pyperclip.copy(value)
         else:
             click.secho(value)
