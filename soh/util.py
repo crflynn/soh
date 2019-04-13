@@ -5,11 +5,12 @@ import click
 import pyperclip
 
 
-def output(func):
+def clipboard_output(func):
+    @click.option("-c", "--clip", is_flag=True, help="copy to clipboard")
     @wraps(func)
     def handle_output(*args, **kwargs):
+        clip = kwargs.pop("clip", False)
         value = func(*args, **kwargs)
-        clip = kwargs.get("clip", False)
         if clip:
             click.secho(value, fg="yellow", nl=False)
             click.secho(" (copied to clipboard 📋)", fg="green")

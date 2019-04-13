@@ -6,7 +6,7 @@ import uuid as _uuid
 
 import click
 
-from soh.util import output
+from soh.util import clipboard_output
 
 
 @click.command(short_help="Generate UUIDs")
@@ -14,9 +14,8 @@ from soh.util import output
 @click.option("-ns", "--namespace", help="namespace (v3, v5) {dns, url, oid, x500}")
 @click.option("-n", "--name", default="", help="name (v3, v5)")
 @click.option("-u", "--upper", is_flag=True, help="use upper case")
-@click.option("-c", "--clip", is_flag=True, help="copy to clipboard")
-@output
-def uuid(version, namespace, name, upper, clip):
+@clipboard_output
+def uuid(version, namespace, name, upper):
     """Generate UUIDs."""
     if namespace is not None:
         namespaces = {
