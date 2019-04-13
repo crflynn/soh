@@ -5,7 +5,8 @@ Entry point: $ soh uuid [OPTS]
 import uuid as _uuid
 
 import click
-import pyperclip
+
+from soh.util import output
 
 
 @click.command(short_help="Generate UUIDs")
@@ -14,6 +15,7 @@ import pyperclip
 @click.option("-n", "--name", default="", help="name (v3, v5)")
 @click.option("-u", "--upper", is_flag=True, help="use upper case")
 @click.option("-c", "--clip", is_flag=True, help="copy to clipboard")
+@output
 def uuid(version, namespace, name, upper, clip):
     """Generate UUIDs."""
     if namespace is not None:
@@ -44,8 +46,4 @@ def uuid(version, namespace, name, upper, clip):
     if upper:
         value = value.upper()
 
-    if clip:
-        click.secho(value, fg="yellow")
-        pyperclip.copy(value)
-    else:
-        click.secho(value)
+    return value
