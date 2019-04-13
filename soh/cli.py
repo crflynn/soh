@@ -14,7 +14,7 @@ CONTEXT_SETTINGS = dict(help_option_names=["-h", "--help"])
 
 @click.group(context_settings=CONTEXT_SETTINGS)
 def cli():
-    pass
+    pass  # pragma: no cover
 
 
 cli.add_command(b64decode, name="b64d")
@@ -23,4 +23,4 @@ cli.add_command(uuid_, name="uuid")
 
 
 if __name__ == "__main__":
-    cli()
+    cli()  # pragma: no cover
