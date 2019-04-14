@@ -16,7 +16,7 @@ def epoch(ctx, float_):
         if not float_:
             value = int(value)
         return str(value)
-    return ""
+    return ""  # pragma: no cover
 
 
 @epoch.command(short_help="epoch time seconds")

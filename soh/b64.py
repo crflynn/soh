@@ -13,7 +13,7 @@ from soh.util import clipboard_output
 @click.group(invoke_without_command=False, short_help="Base64 operations")
 def b64():
     """Base64 decoding and encoding."""
-    pass
+    pass  # pragma: no cover
 
 
 @b64.command(short_help="Decode base64 strings")
