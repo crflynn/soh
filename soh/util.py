@@ -15,10 +15,12 @@ def clipboard_output(func):
         clip = kwargs.pop("clip", False)
         value = func(*args, **kwargs)
         if clip:
-            click.secho(value, fg="yellow", nl=False)
+            if value != "":
+                click.secho(value, fg="yellow", nl=False)
             click.secho(COPIED_TO_CLIPBOARD_MESSAGE, fg="green")
             pyperclip.copy(value)
         else:
-            click.secho(value)
+            if value != "":
+                click.secho(value)
 
     return handle_output
