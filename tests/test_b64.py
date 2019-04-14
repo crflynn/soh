@@ -3,8 +3,8 @@ import base64
 from click.testing import CliRunner
 
 from soh.util import COPIED_TO_CLIPBOARD_MESSAGE
-from soh.b64 import b64decode
-from soh.b64 import b64encode
+from soh.b64 import d
+from soh.b64 import e
 from .test_util import check_clipboard_output
 
 
@@ -17,7 +17,7 @@ def test_b64e(sample_text):  # , clip):
     # if clip is not None:
     #     args += [clip]
 
-    result = runner.invoke(b64encode, args)
+    result = runner.invoke(e, args)
 
     assert result.exit_code == 0
 
@@ -36,7 +36,7 @@ def test_b64d(sample_b64):  # , clip):
     # if clip is not None:
     #     args += [clip]
 
-    result = runner.invoke(b64decode, args)
+    result = runner.invoke(d, args)
 
     assert result.exit_code == 0
 
