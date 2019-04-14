@@ -104,6 +104,6 @@ def check_sys_funcs(func, args, compare_to=None, clip=None):
 
     if compare_to is not None:
         output = result.output.rsplit(COPIED_TO_CLIPBOARD_MESSAGE)[0].replace("\n", "")
-        assert output.lower() == compare_to.lower()
+        assert output == compare_to
 
     return result
