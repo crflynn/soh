@@ -9,10 +9,11 @@ import requests
 from soh.util import clipboard_output
 
 
+# TODO cover this
 @click.group(invoke_without_command=True, short_help="System information")
 @click.pass_context
 @clipboard_output
-def sys(ctx):
+def sys(ctx):  # pragma: no cover
     """System information."""
     if ctx.invoked_subcommand is None:
         # TODO complete set of info here (?)
@@ -49,8 +50,9 @@ def eip():
     response = requests.get("https://api6.ipify.org?format=json")
     try:
         response.raise_for_status()
-    except requests.RequestException:
-        raise click.ClickException("External request failed.")  # pragma: no cover
+    # TODO cover this
+    except requests.RequestException:  # pragma: no cover
+        raise click.ClickException("External request failed.")
 
     value = response.json()["ip"]
 
