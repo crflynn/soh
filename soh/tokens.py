@@ -21,7 +21,7 @@ def segment_to_dict(segment):
 
 # TODO add verify option ? should just ust pyjwt for it with a secret param
 @click.command(short_help="Display JWT contents")
-@click.option("-i", "--indent", default=2, show_default=True, help="json indent")
+@click.option("-i", "--indent", default=4, show_default=True, help="json indent")
 @click.argument("token")
 @clipboard_output
 def jwt(token, indent):
