@@ -18,7 +18,7 @@ def epoch(ctx, float_):
     return ""
 
 
-@epoch.command(short_help="Epoch times")
+@epoch.command(short_help="epoch time seconds")
 @click.option("-f", "--float", "float_", is_flag=True, default=False, help="return float value")
 @clipboard_output
 def s(float_):
@@ -30,7 +30,7 @@ def s(float_):
     return str(value)
 
 
-@epoch.command(short_help="Epoch times")
+@epoch.command(short_help="epoch time milliseconds")
 @click.option("-f", "--float", "float_", is_flag=True, default=False, help="return float value")
 @clipboard_output
 def ms(float_):
@@ -42,7 +42,7 @@ def ms(float_):
     return str(value)
 
 
-@epoch.command(short_help="Epoch times")
+@epoch.command(short_help="epoch time microseconds")
 @click.option("-f", "--float", "float_", is_flag=True, default=False, help="return float value")
 @clipboard_output
 def us(float_):
@@ -54,7 +54,7 @@ def us(float_):
     return str(value)
 
 
-@epoch.command(short_help="Epoch times")
+@epoch.command(short_help="epoch time nanoseconds")
 @click.option("-f", "--float", "float_", is_flag=True, default=False, help="return float value")
 @clipboard_output
 def ns(float_):
