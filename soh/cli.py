@@ -6,6 +6,7 @@ import click
 
 from soh.b64 import b64
 from soh.epoch import epoch
+from soh.sys import sys
 from soh.uuid import uuid_
 
 
@@ -20,6 +21,7 @@ def cli():
 
 cli.add_command(b64, name="b64")
 cli.add_command(epoch, name="epoch")
+cli.add_command(sys, name="sys")
 cli.add_command(uuid_, name="uuid")
 
 
