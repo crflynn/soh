@@ -10,6 +10,7 @@ from soh.util import clipboard_output
 @click.pass_context
 @clipboard_output
 def epoch(ctx, float_):
+    """Epoch time in seconds."""
     if ctx.invoked_subcommand is None:
         value = time.time_ns() / 10 ** 9
         if not float_:
@@ -22,6 +23,7 @@ def epoch(ctx, float_):
 @click.option("-f", "--float", "float_", is_flag=True, default=False, help="return float value")
 @clipboard_output
 def s(float_):
+    """Epoch time in seconds."""
     value = time.time_ns() / 10 ** 9
 
     if not float_:
@@ -34,6 +36,7 @@ def s(float_):
 @click.option("-f", "--float", "float_", is_flag=True, default=False, help="return float value")
 @clipboard_output
 def ms(float_):
+    """Epoch time in milliseconds."""
     value = time.time_ns() / 10 ** 6
 
     if not float_:
@@ -46,6 +49,7 @@ def ms(float_):
 @click.option("-f", "--float", "float_", is_flag=True, default=False, help="return float value")
 @clipboard_output
 def us(float_):
+    """Epoch time in microseconds."""
     value = time.time_ns() / 10 ** 3
 
     if not float_:
@@ -58,6 +62,7 @@ def us(float_):
 @click.option("-f", "--float", "float_", is_flag=True, default=False, help="return float value")
 @clipboard_output
 def ns(float_):
+    """Epoch time in nanoseconds."""
     value = time.time_ns()
 
     if not float_:
