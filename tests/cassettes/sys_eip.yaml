@@ -1,0 +1,35 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      User-Agent:
+      - python-requests/2.21.0
+    method: GET
+    uri: https://api6.ipify.org/?format=json
+  response:
+    body:
+      # Putting a fake global IP here
+      string: '{"ip":"1.2.3.4"}'
+    headers:
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '22'
+      Content-Type:
+      - application/json
+      Date:
+      - Sun, 14 Apr 2019 02:10:17 GMT
+      Server:
+      - nginx/1.14.2
+      Vary:
+      - Origin
+    status:
+      code: 200
+      message: OK
+version: 1
