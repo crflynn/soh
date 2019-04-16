@@ -1,6 +1,7 @@
 """CLI functionality.
 
-Entry point: $ soh [CMD] [OPTS] input
+Entry point: $ soh --help
+Entry point: $ soh version
 """
 import click
 

@@ -1,3 +1,17 @@
+"""System information.
+
+Entry point: $ soh arch
+Entry point: $ soh cores
+Entry point: $ soh eip
+Entry point: $ soh ip
+Entry point: $ soh eip
+Entry point: $ soh mac
+Entry point: $ soh machine
+Entry point: $ soh node
+Entry point: $ soh proc
+Entry point: $ soh sys
+Entry point: $ soh sysver
+"""
 import multiprocessing
 import platform
 import socket
@@ -82,10 +96,9 @@ def proc():
     return platform.processor()
 
 
-# TODO cover this
 @click.command(short_help="System information")
 @clipboard_output
-def sys():  # pragma: no cover
+def sys():
     """System information."""
     return platform.system()
 

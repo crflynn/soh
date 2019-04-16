@@ -1,7 +1,7 @@
 """JWT CLI functionality.
 
-Entry point: $ soh b64d [OPTS] <text>
-Entry point: $ soh b64e [OPTS] <text>
+Entry point: $ soh token [OPTS] <text>
+Entry point: $ soh paseto [OPTS] <text>
 """
 import base64
 import json
@@ -19,7 +19,6 @@ def segment_to_dict(segment):
     return json.loads(b64decode(segment))
 
 
-# TODO add verify option ? should just ust pyjwt for it with a secret param
 @click.command(short_help="Display JWT contents")
 @click.option("-i", "--indent", default=4, show_default=True, help="json indent")
 @click.argument("token")

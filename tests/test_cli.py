@@ -1,2 +1,9 @@
-from soh.cli import cli
+from .common import compare
+from soh.cli import version
 from soh import __version__
+
+
+# @check_clipboard_output
+def test_version():  # , clip):
+    args = []
+    compare(version, args, __version__)
