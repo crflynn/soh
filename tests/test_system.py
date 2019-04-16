@@ -36,7 +36,7 @@ def test_cores():  # , clip):
 # @check_clipboard_output
 def test_eip():  # , clip):
     args = []
-    with vcr.use_cassette("tests/cassettes/sys_eip.yaml"):
+    with vcr.use_cassette("tests/cassettes/system_eip.yaml"):
         result = compare(eip, args)
     value = result.output.rsplit(COPIED_TO_CLIPBOARD_MESSAGE)[0].replace("\n", "")
     address = ipaddress.ip_address(value)
