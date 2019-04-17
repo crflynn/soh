@@ -7,6 +7,7 @@ import click
 
 from soh.b64 import b64
 from soh.epoch import epoch
+from soh.json import json_
 from soh.system import arch
 from soh.system import cores
 from soh.system import eip
@@ -45,6 +46,7 @@ cli.add_command(arch, name="arch")
 cli.add_command(cores, name="cores")
 cli.add_command(eip, name="eip")
 cli.add_command(ip, name="ip")
+cli.add_command(json_, name="json")
 cli.add_command(jwt, name="jwt")
 cli.add_command(mac, name="mac")
 cli.add_command(machine, name="machine")
