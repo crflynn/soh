@@ -7,6 +7,7 @@ import click
 
 from soh.b64 import b64
 from soh.epoch import epoch
+from soh.serve import serve
 from soh.system import arch
 from soh.system import cores
 from soh.system import eip
@@ -50,6 +51,7 @@ cli.add_command(mac, name="mac")
 cli.add_command(machine, name="machine")
 cli.add_command(node, name="node")
 cli.add_command(proc, name="proc")
+cli.add_command(serve, name="serve")
 cli.add_command(sys, name="sys")
 cli.add_command(sysver, name="sysver")
 cli.add_command(uuid_, name="uuid")
