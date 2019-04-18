@@ -69,7 +69,7 @@ def t(request):
 
 
 # json
-@pytest.fixture(params=["-i", "--indent"])
+@pytest.fixture(params=[None, "-i", "--indent"])
 def indent_label(request):
     return request.param
 
@@ -81,4 +81,13 @@ def indent(request):
 
 @pytest.fixture(params=[None, "-a", "--ascii"])
 def ascii(request):
+    return request.param
+
+
+json_sample = """'{"a":"b","c":1,"d":{"e":"f"}"g":[1,2,3],"s":"♣"}'"""
+json_sample_bad = """'{"a":"b","c":1,"d":{"e":"f"}"g":[1,2,3],"s":"♣"'"""
+
+
+@pytest.fixture(params=[json_sample, json_sample_bad])
+def json_text(request):
     return request.param

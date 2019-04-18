@@ -19,4 +19,7 @@ def json_(indent, text, ascii):
 
     Use single quotes around the JSON text.
     """
-    return json.dumps(json.loads(text), indent=indent, ensure_ascii=ascii)
+    try:
+        return json.dumps(json.loads(text), indent=indent, ensure_ascii=ascii)
+    except json.decoder.JSONDecodeError:
+        raise click.ClickException("Unable to parse JSON.")
