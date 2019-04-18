@@ -1,3 +1,7 @@
+"""Simple HTTP fileserver.
+
+Entry point: $ soh serve [OPTS]
+"""
 from http.server import SimpleHTTPRequestHandler
 import socketserver
 
