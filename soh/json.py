@@ -11,11 +11,12 @@ from soh.util import clipboard_output
 
 @click.command(short_help="JSON printing")
 @click.option("-i", "--indent", default=4, help="indent quantity")
+@click.option("-a", "--ascii", is_flag=True, default=False, help="ensure ascii")
 @click.argument("text")
 @clipboard_output
-def json_(indent, text):
+def json_(indent, text, ascii):
     """JSON printing.
 
     Use single quotes around the JSON text.
     """
-    return json.dumps(json.loads(text), indent=indent, ensure_ascii=False)
+    return json.dumps(json.loads(text), indent=indent, ensure_ascii=ascii)

@@ -66,3 +66,19 @@ def float_(request):
 @pytest.fixture(params=[None, "-t"])
 def t(request):
     return request.param
+
+
+# json
+@pytest.fixture(params=["-i", "--indent"])
+def indent_label(request):
+    return request.param
+
+
+@pytest.fixture(params=[2, 3, 5])
+def indent(request):
+    return request.param
+
+
+@pytest.fixture(params=[None, "-a", "--ascii"])
+def ascii(request):
+    return request.param
