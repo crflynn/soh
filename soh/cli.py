@@ -8,7 +8,11 @@ import click
 from soh.b64 import b64
 from soh.create import create
 from soh.create import gitignore
+from soh.datetime import time
+from soh.datetime import today
+from soh.datetime import now
 from soh.epoch import epoch
+from soh.json import json_
 from soh.system import arch
 from soh.system import cores
 from soh.system import eip
@@ -34,7 +38,7 @@ def cli():
     pass  # pragma: no cover
 
 
-@click.command()
+@click.command(short_help="soh CLI version")
 @clipboard_output
 def version():
     """Sleight of hand (soh) version."""
@@ -49,13 +53,17 @@ cli.add_command(arch, name="arch")
 cli.add_command(cores, name="cores")
 cli.add_command(eip, name="eip")
 cli.add_command(ip, name="ip")
+cli.add_command(json_, name="json")
 cli.add_command(jwt, name="jwt")
 cli.add_command(mac, name="mac")
 cli.add_command(machine, name="machine")
+cli.add_command(now, name="now")
 cli.add_command(node, name="node")
 cli.add_command(proc, name="proc")
 cli.add_command(sys, name="sys")
 cli.add_command(sysver, name="sysver")
+cli.add_command(time, name="time")
+cli.add_command(today, name="today")
 cli.add_command(uuid_, name="uuid")
 cli.add_command(version, name="version")
 

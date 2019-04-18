@@ -1,6 +1,6 @@
 from .common import compare
 from soh.cli import version
-from soh import __version__
+from soh.__version__ import __version__
 
 
 # @check_clipboard_output
