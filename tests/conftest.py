@@ -60,3 +60,9 @@ def sample_b64(request):
 @pytest.fixture(params=[None, "-f", "--float"])
 def float_(request):
     return request.param
+
+
+# datetime
+@pytest.fixture(params=[None, "-t"])
+def t(request):
+    return request.param
