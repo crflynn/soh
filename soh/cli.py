@@ -7,7 +7,6 @@ import click
 
 from soh.b64 import b64
 from soh.create import create
-from soh.create import gitignore
 from soh.datetime import time
 from soh.datetime import today
 from soh.datetime import now
@@ -47,7 +46,6 @@ def version():
 
 cli.add_command(b64, name="b64")
 cli.add_command(create, name="create")
-cli.add_command(gitignore, name="gitignore")
 cli.add_command(epoch, name="epoch")
 cli.add_command(arch, name="arch")
 cli.add_command(cores, name="cores")
