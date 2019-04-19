@@ -91,3 +91,14 @@ json_sample_bad = """'{"a":"b","c":1,"d":{"e":"f"}"g":[1,2,3],"s":"♣"'"""
 @pytest.fixture(params=[json_sample, json_sample_bad])
 def json_text(request):
     return request.param
+
+
+# create
+@pytest.fixture(params=[None, "-o", "--overwrite"])
+def overwrite(request):
+    return request.param
+
+
+@pytest.fixture(params=["python", "list", "invalid_language"])
+def language(request):
+    return request.param

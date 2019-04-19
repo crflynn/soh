@@ -3,6 +3,7 @@ from functools import wraps
 
 import click
 import pyperclip
+import requests
 
 
 COPIED_TO_CLIPBOARD_MESSAGE = " (copied to clipboard 📋)"
@@ -24,3 +25,10 @@ def clipboard_output(func):
                 click.secho(value)
 
     return handle_output
+
+
+def ensure_ok_response(response, message):
+    try:
+        response.raise_for_status()
+    except requests.RequestException:
+        raise click.ClickException(message)
