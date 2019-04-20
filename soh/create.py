@@ -1,6 +1,7 @@
 """File creation helper functionality.
 
 Entry point: $ soh create gitignore [OPTS] <text>
+Entry point: $ soh create license [OPTS] <text>
 """
 import os
 
