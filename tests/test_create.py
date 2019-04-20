@@ -5,7 +5,7 @@ from click.testing import CliRunner
 import vcr
 
 from soh.create import gitignore
-from soh.create import license
+from soh.create import license_
 from soh import create
 from soh.util import COPIED_TO_CLIPBOARD_MESSAGE
 
@@ -69,7 +69,7 @@ def test_license(overwrite, value):
     args += [value]
 
     with vcr.use_cassette(f"tests/cassettes/create_license_{value}.yaml"):
-        result = runner.invoke(license, args)
+        result = runner.invoke(license_, args)
 
     if value == "invalid_license":
         assert result.exit_code != 0
@@ -87,7 +87,7 @@ def test_license(overwrite, value):
 
     # test overwrite functionality
     with vcr.use_cassette(f"tests/cassettes/create_license_{value}.yaml"):
-        result = runner.invoke(license, args)
+        result = runner.invoke(license_, args)
 
     if overwrite is None:
         assert result.exit_code != 0

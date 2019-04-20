@@ -66,11 +66,11 @@ def gitignore(language, overwrite):
     return "File " + GITIGNORE_FILE + " was created."
 
 
-@create.command(short_help="Create a LICENSE.txt file from github.com/github/choosealicense.com")
+@create.command(name="license", short_help="Create a LICENSE.txt file from github.com/github/choosealicense.com")
 @click.option("-o", "--overwrite", is_flag=True, default=False, show_default=True, help="overwrite existing .gitignore")
 @click.argument("value")
 @clipboard_output
-def license(value, overwrite):
+def license_(value, overwrite):
     """Create a LICENSE.txt file.
 
     Use `list` to get a list of available licenses.
