@@ -11,6 +11,7 @@ from soh.datetime import time
 from soh.datetime import today
 from soh.datetime import now
 from soh.epoch import epoch
+from soh.serve import serve
 from soh.json import json_
 from soh.system import arch
 from soh.system import cores
@@ -58,6 +59,7 @@ cli.add_command(machine, name="machine")
 cli.add_command(now, name="now")
 cli.add_command(node, name="node")
 cli.add_command(proc, name="proc")
+cli.add_command(serve, name="serve")
 cli.add_command(sys, name="sys")
 cli.add_command(sysver, name="sysver")
 cli.add_command(time, name="time")

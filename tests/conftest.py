@@ -62,6 +62,12 @@ def float_(request):
     return request.param
 
 
+# serve
+@pytest.fixture(params=[None, "-p", "--port"])
+def port_label(request):
+    return request.param
+
+
 # datetime
 @pytest.fixture(params=[None, "-t"])
 def t(request):

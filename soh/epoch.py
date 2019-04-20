@@ -1,3 +1,11 @@
+"""Epoch time functionality.
+
+Entry point: $ soh epoch [OPTS]
+Entry point: $ soh epoch s [OPTS]
+Entry point: $ soh epoch ms [OPTS]
+Entry point: $ soh epoch us [OPTS]
+Entry point: $ soh epoch ns [OPTS]
+"""
 import time
 
 import click
