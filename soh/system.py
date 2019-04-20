@@ -21,6 +21,7 @@ import click
 import requests
 
 from soh.util import clipboard_output
+from soh.util import ensure_ok_response
 
 
 @click.command(short_help="OS version")
@@ -42,11 +43,7 @@ def cores():
 def eip():
     """External IP address."""
     response = requests.get("https://api6.ipify.org?format=json")
-    try:
-        response.raise_for_status()
-    # TODO cover this
-    except requests.RequestException:  # pragma: no cover
-        raise click.ClickException("External request failed.")
+    ensure_ok_response(response, "External request failed.")
 
     value = response.json()["ip"]
 

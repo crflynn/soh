@@ -3,12 +3,17 @@ from functools import wraps
 import click
 from click.testing import CliRunner
 import pyperclip
+import pytest
+import requests
+import vcr
 
 from soh.util import clipboard_output
+from soh.util import ensure_ok_response
 from soh.util import COPIED_TO_CLIPBOARD_MESSAGE
 
 
 CLIPBOARD_TEST_VALUE = "qweoridvlasna;ebvaubv"
+FAILURE_MESSAGE = "fail message"
 
 
 def check_clipboard_output(func):
@@ -67,3 +72,15 @@ def test_dummy():
         else:
             assert COPIED_TO_CLIPBOARD_MESSAGE not in result.output
             assert pyperclip.paste() == CLIPBOARD_TEST_VALUE
+
+
+def test_ensure_ok_response():
+    with vcr.use_cassette("tests/cassettes/util_success_response.yaml"):
+        response = requests.get("https://httpbin.org/status/200")
+        ensure_ok_response(response, FAILURE_MESSAGE)
+
+    with vcr.use_cassette("tests/cassettes/util_fail_response.yaml"):
+        response = requests.get("https://httpbin.org/status/500")
+        with pytest.raises(click.ClickException) as exc:
+            ensure_ok_response(response, FAILURE_MESSAGE)
+            assert repr(exc) == FAILURE_MESSAGE
