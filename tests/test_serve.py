@@ -13,10 +13,11 @@ def test_serve(port_label):
     # because the OS takes a long time to free
     # up the ports when trying to reuse
     ports = {"-p": 8081, "--port": 8082}
+    port = ports.get(port_label, None)
+
     # build args
     args = []
     if port_label is not None:
-        port = ports[port_label]
         args += [port_label, str(port)]
     command = ["soh", "serve"]
     if len(args) > 0:
