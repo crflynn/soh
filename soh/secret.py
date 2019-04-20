@@ -74,4 +74,5 @@ def pw(n, s, l, a):
 
     password = list(password)
     random.shuffle(password)
+
     return "".join(password)
