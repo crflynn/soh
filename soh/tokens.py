@@ -23,7 +23,7 @@ def segment_to_dict(segment):
 @click.option("-i", "--indent", default=4, show_default=True, help="json indent")
 @click.argument("token")
 @clipboard_output
-def jwt(token, indent):
+def jwt(indent, token):
     header, payload, signature = token.split(".")
     output = "header = " + json.dumps(segment_to_dict(header), indent=indent)
     output += "\n"

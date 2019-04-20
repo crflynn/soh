@@ -9,7 +9,7 @@ import click
 
 
 @click.command(short_help="Simple http server at current directory")
-@click.option("-p", "--port", default=8080, help="port")
+@click.option("-p", "--port", default=8080, show_default=True, help="port")
 def serve(port):
     """Simple HTTP Server."""
     with socketserver.TCPServer(("", port), SimpleHTTPRequestHandler) as httpd:

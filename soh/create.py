@@ -21,7 +21,7 @@ def create():
 
 
 @create.command(short_help="Create a .gitignore file from github.com/git/gitignore")
-@click.option("-o", "--overwrite", is_flag=True, default=False, help="overwrite existing .gitignore")
+@click.option("-o", "--overwrite", is_flag=True, default=False, show_default=True, help="overwrite existing .gitignore")
 @click.argument("language")
 @clipboard_output
 def gitignore(language, overwrite):
