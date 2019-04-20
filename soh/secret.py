@@ -14,6 +14,9 @@ import click
 from soh.util import clipboard_output
 
 
+AMBIGUOUS_CHARACTERS = "Iil1Lo0O"
+
+
 @click.group(invoke_without_command=False, short_help="Secrets generators")
 def secret():
     """Secrets generation."""
@@ -53,10 +56,8 @@ def b(nbytes):
 @clipboard_output
 def pw(n, s, l, a):
     """Generate a password."""
-    if n + s > 32:
+    if n + s > l:
         raise click.ClickException("Password length must exceed character requirements.")
-
-    ambiguous = "Iil1Lo0O"
 
     letters = string.ascii_letters
     numbers = string.digits
@@ -64,7 +65,7 @@ def pw(n, s, l, a):
 
     # avoid ambiguous characters
     if a is False:
-        table = str.maketrans(dict.fromkeys(ambiguous))
+        table = str.maketrans(dict.fromkeys(AMBIGUOUS_CHARACTERS))
         letters = letters.translate(table)
         numbers = numbers.translate(table)
         symbols = symbols.translate(table)
