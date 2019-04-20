@@ -25,7 +25,7 @@ def test_serve(port_label):
     # launch in a subprocess
     process = Popen(command, stdout=PIPE)
     # let the server spin up
-    time.sleep(1)
+    time.sleep(3)
 
     # make a request for the readme file
     p = str(port if port_label is not None else 8080)
