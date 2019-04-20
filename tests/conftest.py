@@ -110,6 +110,11 @@ def language(request):
     return request.param
 
 
+@pytest.fixture(params=["mit", "list", "invalid_license"])
+def value(request):
+    return request.param
+
+
 # tokens
 @pytest.fixture(
     params=[

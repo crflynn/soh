@@ -5,6 +5,7 @@ from click.testing import CliRunner
 import vcr
 
 from soh.create import gitignore
+from soh.create import license
 from soh import create
 from soh.util import COPIED_TO_CLIPBOARD_MESSAGE
 
@@ -52,3 +53,48 @@ def test_gitignore(overwrite, language):
 
     # cleanup
     os.remove(create.GITIGNORE_FILE)
+
+
+def test_license(overwrite, value):
+    # patch over the license name so we don't overwrite the actual .gitignore
+    # use randomness in the name in order to parallelized tests
+    create.LICENSE_FILE = f"{str(uuid.uuid4())}_LICENSE.txt"
+
+    runner = CliRunner()
+
+    # build args
+    args = []
+    if overwrite is not None:
+        args += [overwrite]
+    args += [value]
+
+    with vcr.use_cassette(f"tests/cassettes/create_license_{value}.yaml"):
+        result = runner.invoke(license, args)
+
+    if value == "invalid_license":
+        assert result.exit_code != 0
+        return
+
+    assert result.exit_code == 0
+
+    output = result.output.rsplit(COPIED_TO_CLIPBOARD_MESSAGE)[0].replace("\n", "")
+
+    if value == "list":
+        assert "mit" in output
+        return
+    else:
+        assert os.path.isfile(create.LICENSE_FILE)
+
+    # test overwrite functionality
+    with vcr.use_cassette(f"tests/cassettes/create_license_{value}.yaml"):
+        result = runner.invoke(license, args)
+
+    if overwrite is None:
+        assert result.exit_code != 0
+    elif overwrite in ("-o", "--overwrite"):
+        assert result.exit_code == 0
+
+    assert os.path.isfile(create.LICENSE_FILE)
+
+    # cleanup
+    os.remove(create.LICENSE_FILE)
