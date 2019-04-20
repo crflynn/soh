@@ -48,7 +48,7 @@ def b(nbytes):
 @click.option("-n", default=8, show_default=True, help="quantity of numbers")
 @click.option("-s", default=4, show_default=True, help="quantity of symbols")
 @click.option("-l", default=32, show_default=True, help="length")
-@click.option("-a", is_flag=True, default=False, show_default=True, help="avoid ambiguous")
+@click.option("-a", is_flag=True, default=False, show_default=True, help="allow ambiguous characters (Iil1Lo0O)")
 @click.option("-p", "--protect", "protect", is_flag=True, default=False, show_default=True, help="hide from console")
 @clipboard_output
 def pw(n, s, l, a):
@@ -63,10 +63,11 @@ def pw(n, s, l, a):
     symbols = string.punctuation
 
     # avoid ambiguous characters
-    if a:
-        letters = letters.strip(ambiguous)
-        numbers = numbers.strip(ambiguous)
-        symbols = symbols.strip(ambiguous)
+    if a is False:
+        table = str.maketrans(dict.fromkeys(ambiguous))
+        letters = letters.translate(table)
+        numbers = numbers.translate(table)
+        symbols = symbols.translate(table)
 
     password = "".join(secrets.choice(numbers) for _ in range(n))
     password += "".join(secrets.choice(symbols) for _ in range(s))
