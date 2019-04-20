@@ -14,7 +14,7 @@ import click
 from soh.util import clipboard_output
 
 
-@click.group(invoke_without_command=False, short_help="Base64 operations")
+@click.group(invoke_without_command=False, short_help="Secrets generators")
 def secret():
     """Secrets generation."""
     pass  # pragma: no cover
