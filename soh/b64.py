@@ -21,7 +21,10 @@ def b64():
 @clipboard_output
 def d(text):
     """Decode base64."""
-    return base64.b64decode(text.encode("utf-8")).decode("utf-8")
+    try:
+        return base64.b64decode(text.encode("utf-8")).decode("utf-8")
+    except Exception as exc:  # pragma: no cover
+        raise click.ClickException("Unable to decode: " + str(exc))
 
 
 @b64.command(short_help="Encode strings to base64")
@@ -29,4 +32,7 @@ def d(text):
 @clipboard_output
 def e(text):
     """Encode base64."""
-    return base64.b64encode(text.encode("utf-8")).decode("utf-8")
+    try:
+        return base64.b64encode(text.encode("utf-8")).decode("utf-8")
+    except Exception as exc:  # pragma: no cover
+        raise click.ClickException("Unable to encode: " + str(exc))
