@@ -86,7 +86,7 @@ def indent(request):
 
 
 @pytest.fixture(params=[None, "-a", "--ascii"])
-def ascii(request):
+def ascii_(request):
     return request.param
 
 
@@ -122,4 +122,55 @@ def value(request):
     ]
 )
 def jwt_sample(request):
+    return request.param
+
+
+# secret
+@pytest.fixture(params=[None, "-b", "--bytes"])
+def nbytes_label(request):
+    return request.param
+
+
+@pytest.fixture(params=[16, 64])
+def nbytes(request):
+    return request.param
+
+
+@pytest.fixture(params=[None, "-n"])
+def qty_num_label(request):
+    return request.param
+
+
+@pytest.fixture(params=[0, 24])
+def qty_num(request):
+    return request.param
+
+
+@pytest.fixture(params=[None, "-s"])
+def qty_sym_label(request):
+    return request.param
+
+
+@pytest.fixture(params=[0, 24])
+def qty_sym(request):
+    return request.param
+
+
+@pytest.fixture(params=[None, "-l"])
+def length_label(request):
+    return request.param
+
+
+@pytest.fixture(params=[8, 64])
+def length(request):
+    return request.param
+
+
+@pytest.fixture(params=[None, "-a"])
+def allow_ambiguous(request):
+    return request.param
+
+
+@pytest.fixture(params=[None, "-p"])
+def protect(request):
     return request.param

@@ -14,14 +14,15 @@ def clipboard_output(func):
     @wraps(func)
     def handle_output(*args, **kwargs):
         clip = kwargs.pop("clip", False)
+        protect = kwargs.pop("protect", False)
         value = func(*args, **kwargs)
         if clip:
-            if value != "":
+            if value != "" and not protect:
                 click.secho(value, fg="yellow", nl=False)
             click.secho(COPIED_TO_CLIPBOARD_MESSAGE, fg="green")
             pyperclip.copy(value)
         else:
-            if value != "":
+            if value != "" and not protect:
                 click.secho(value)
 
     return handle_output

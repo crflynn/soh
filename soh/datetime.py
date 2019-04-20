@@ -13,7 +13,7 @@ from soh.util import clipboard_output
 # TODO timezones
 
 
-@click.command(short_help="OS version")
+@click.command(short_help="UTC now")
 @click.option("-t", is_flag=True, default=False, help="use T separator")
 @clipboard_output
 def now(t):
@@ -24,7 +24,7 @@ def now(t):
         return str(datetime.datetime.utcnow())
 
 
-@click.command(short_help="OS version")
+@click.command(short_help="UTC time")
 @clipboard_output
 def time():
     """Current time."""
@@ -32,7 +32,7 @@ def time():
 
 
 # TODO use T sep
-@click.command(short_help="OS version")
+@click.command(short_help="UTC date")
 @clipboard_output
 def today():
     """Current date."""
