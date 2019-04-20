@@ -60,3 +60,9 @@ def sample_b64(request):
 @pytest.fixture(params=[None, "-f", "--float"])
 def float_(request):
     return request.param
+
+
+# serve
+@pytest.fixture(params=[None, "-p", "--port"])
+def port_label(request):
+    return request.param
