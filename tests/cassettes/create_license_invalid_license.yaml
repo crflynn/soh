@@ -1,0 +1,123 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      User-Agent:
+      - python-requests/2.21.0
+    method: GET
+    uri: https://api.github.com/repos/github/choosealicense.com/contents/_licenses?ref=gh-pages
+  response:
+    body:
+      string: !!binary |
+        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
+        tMVE66Lkz5///j9wp1Er7HgAAA==
+    headers:
+      Access-Control-Allow-Origin:
+      - '*'
+      Access-Control-Expose-Headers:
+      - ETag, Link, Location, Retry-After, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining,
+        X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval,
+        X-GitHub-Media-Type
+      Cache-Control:
+      - public, max-age=60, s-maxage=60
+      Content-Encoding:
+      - gzip
+      Content-Security-Policy:
+      - default-src 'none'
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Sat, 20 Apr 2019 19:20:49 GMT
+      ETag:
+      - W/"5be721b9d0ef72290f092171c24cf5b0519087f5"
+      Last-Modified:
+      - Sat, 20 Apr 2019 06:16:17 GMT
+      Referrer-Policy:
+      - origin-when-cross-origin, strict-origin-when-cross-origin
+      Server:
+      - GitHub.com
+      Status:
+      - 200 OK
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains; preload
+      Transfer-Encoding:
+      - chunked
+      Vary:
+      - Accept
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - deny
+      X-GitHub-Media-Type:
+      - github.v3; format=json
+      X-GitHub-Request-Id:
+      - F03E:65FC:DB18E1:1BF6C39:5CBB7111
+      X-RateLimit-Limit:
+      - '60'
+      X-RateLimit-Remaining:
+      - '51'
+      X-RateLimit-Reset:
+      - '1555791503'
+      X-XSS-Protection:
+      - 1; mode=block
+    status:
+      code: 200
+      message: OK
+version: 1
