@@ -6,15 +6,15 @@ from soh.util import COPIED_TO_CLIPBOARD_MESSAGE
 from soh.json import json_
 
 
-def test_json(indent_label, indent, ascii, json_text):
+def test_json(indent_label, indent, ascii_, json_text):
     runner = CliRunner()
 
     # build args
     args = []
     if indent_label is not None:
         args += [indent_label, indent]
-    if ascii is not None:
-        args += [ascii]
+    if ascii_ is not None:
+        args += [ascii_]
     args += [json_text]
 
     result = runner.invoke(json_, args)
@@ -31,6 +31,6 @@ def test_json(indent_label, indent, ascii, json_text):
     if indent_label is not None:
         for row in output.split("\n"):
             assert (len(row) - len(row.lstrip())) % indent == 0
-    if ascii:
+    if ascii_:
         assert output != json.dumps(json.loads(json_text), indent=indent, ensure_ascii=False)
-    assert output == json.dumps(json.loads(json_text), indent=indent, ensure_ascii=ascii)
+    assert output == json.dumps(json.loads(json_text), indent=indent, ensure_ascii=ascii_)
