@@ -24,6 +24,9 @@ from soh.util import clipboard_output
 from soh.util import ensure_ok_response
 
 
+# TODO consider organizing these under `sys` command
+
+
 @click.command(short_help="OS version")
 @clipboard_output
 def arch():
