@@ -7,11 +7,14 @@ Sleight of hand, or ``soh``, is a command line tool that handles a lot of common
 Installation
 ------------
 
-Currently, ``soh`` can be installed using ``pip``. In the future, I hope to have it available in brew tap to be installed using ``brew``. To install use:
+To install ``soh`` use ``pip``.
 
 .. code-block:: shell
 
     pip install soh
+
+
+# TODO brew tap
 
 
 Usage
@@ -22,6 +25,37 @@ The entry point for all commands is
 .. code-block:: shell
 
     $ soh
+    Usage: soh [OPTIONS] COMMAND [ARGS]...
+
+      Sleight of hand CLI tricks.
+
+    Options:
+      -h, --help  Show this message and exit.
+
+    Commands:
+      arch     OS version
+      b64      Base64 operations
+      cores    Number of cores
+      create   Helper file creations
+      eip      External IP address
+      epoch    Epoch times
+      ip       Local IP address
+      json     JSON printing
+      jwt      Display JWT contents
+      mac      Local MAC address
+      machine  Machine information
+      node     OS version
+      now      UTC now
+      proc     Processor information
+      secret   Secrets generators
+      serve    Simple http server at current directory
+      sys      System information
+      sysver   OS version
+      time     UTC time
+      today    UTC date
+      uuid     Generate UUIDs
+      version  soh CLI version
+
 
 
 To get help on any command use the ``-h`` or ``--help`` flag.
@@ -52,6 +86,8 @@ To copy the execution output of most commands to clipboard, use the ``-c`` or ``
 
 
 
+
+
 Developer Setup
 ---------------
 
@@ -76,3 +112,15 @@ To set up a local development environment follow these (or portions of these) st
     curl -sSL https://raw.githubusercontent.com/sdispater/poetry/master/get-poetry.py | python
     poetry install
     poetry install --develop soh
+
+
+``pre-commit`` will enforce ``black`` code formatting to pass before committing. The configuration for ``black`` is in the ``pyproject.toml`` file.
+
+To run tests,
+
+.. code-block:: shell
+
+    pytest
+
+
+The testing configuration is found in ``pytest.ini``.
