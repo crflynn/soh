@@ -1,6 +1,8 @@
-"""System information.
+"""UTC Datetime information.
 
-Entry point: $ soh utcnow
+Entry point: $ soh now [OPTS]
+Entry point: $ soh time [OPTS]
+Entry point: $ soh today [OPTS]
 """
 import datetime
 
@@ -11,6 +13,7 @@ from soh.util import clipboard_output
 
 # TODO utc vs local
 # TODO timezones
+# TODO consider moving these commands under a `dt` command
 
 
 @click.command(short_help="UTC now")

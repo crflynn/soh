@@ -8,6 +8,9 @@ import socketserver
 import click
 
 
+# TODO consider specifying the path
+
+
 @click.command(short_help="Simple http server at current directory")
 @click.option("-p", "--port", default=8080, show_default=True, help="port")
 def serve(port):

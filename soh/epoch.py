@@ -13,6 +13,9 @@ import click
 from soh.util import clipboard_output
 
 
+# TODO consider `epoch` invoke without command = false
+
+
 @click.group(invoke_without_command=True, short_help="Epoch times")
 @click.option("-f", "--float", "float_", is_flag=True, default=False, help="return float value")
 @click.pass_context
