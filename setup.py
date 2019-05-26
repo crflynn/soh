@@ -33,7 +33,7 @@ setup(
     ],
     keywords="soh cli tool",
     packages=find_packages(),
-    install_requires=["click", "pyperclip"],
+    install_requires=["arrow", "click", "pyperclip", "requests"],
     zip_safe=False,
     entry_points={"console_scripts": ["soh=soh.cli:cli"]},
 )
