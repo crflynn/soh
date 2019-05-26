@@ -16,7 +16,7 @@ GITIGNORE_FILE = ".gitignore"
 LICENSE_FILE = "LICENSE.txt"
 
 
-@click.group(invoke_without_command=False, short_help="Helper file creations")
+@click.group(invoke_without_command=False, short_help="+ Create files")
 def create():
     """Create files."""
     pass  # pragma: no cover

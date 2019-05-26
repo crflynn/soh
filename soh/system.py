@@ -24,24 +24,52 @@ from soh.util import clipboard_output
 from soh.util import ensure_ok_response
 
 
-@click.command(short_help="OS version")
+@click.group(invoke_without_command=False, short_help="+ System information")
+def sys():
+    """System information."""
+    pass  # pragma: no cover
+
+
+@sys.command(name="all", short_help="System information")
+@clipboard_output
+def all_():
+    """System information"""
+    return (
+        "Arch: " + "; ".join(platform.architecture()) + "\n"
+        "Cores: " + str(multiprocessing.cpu_count()) + "\n"
+        "External IP: " + get_external_ip() + "\n"
+        "Local IP: " + socket.gethostbyname(socket.gethostname()) + "\n"
+        "MAC Address: " + ":".join(("%012x" % getnode())[i : i + 2] for i in range(0, 12, 2)) + "\n"
+        "Machine type: " + platform.machine() + "\n"
+        "Machine name: " + platform.node() + "\n"
+        "Platform: " + platform.system() + "\n"
+        "Platform version: " + platform.version() + "\n"
+        "Processor: " + platform.processor()
+    )
+
+
+@sys.command(short_help="OS architecture")
 @clipboard_output
 def arch():
     """Platform architecture."""
     return "; ".join(platform.architecture())
 
 
-@click.command(short_help="Number of cores")
+@sys.command(short_help="Number of cores")
 @clipboard_output
 def cores():
     """Number of cores."""
     return str(multiprocessing.cpu_count())
 
 
-@click.command(short_help="External IP address")
+@sys.command(short_help="External IP address")
 @clipboard_output
 def eip():
     """External IP address."""
+    return get_external_ip()
+
+
+def get_external_ip():
     response = requests.get("https://api6.ipify.org?format=json")
     ensure_ok_response(response, "External request failed.")
 
@@ -50,7 +78,7 @@ def eip():
     return value
 
 
-@click.command(short_help="Local IP address")
+@sys.command(short_help="Local IP address")
 @clipboard_output
 def ip():
     """Local IP address."""
@@ -58,13 +86,12 @@ def ip():
     return str(value)
 
 
-@click.command(short_help="Local MAC address")
+@sys.command(short_help="Local MAC address")
 @click.option("-u", "--upper", is_flag=True, help="use upper case")
 @clipboard_output
 def mac(upper):
     """MAC address."""
-    node = getnode()
-    value = ":".join(("%012x" % node)[i : i + 2] for i in range(0, 12, 2))
+    value = ":".join(("%012x" % getnode())[i : i + 2] for i in range(0, 12, 2))
 
     if upper:
         value = value.upper()
@@ -72,36 +99,36 @@ def mac(upper):
     return str(value)
 
 
-@click.command(short_help="Machine information")
+@sys.command(short_help="Machine information")
 @clipboard_output
 def machine():
     """Machine type."""
     return platform.machine()
 
 
-@click.command(short_help="OS version")
+@sys.command(short_help="Machine name")
 @clipboard_output
 def node():
     """Node name."""
     return platform.node()
 
 
-@click.command(short_help="Processor information")
+@sys.command(name="platform", short_help="Platform type")
+@clipboard_output
+def platform_():
+    """Platform type."""
+    return platform.system()
+
+
+@sys.command(short_help="Processor information")
 @clipboard_output
 def proc():
     """Processor."""
     return platform.processor()
 
 
-@click.command(short_help="System information")
+@sys.command(short_help="OS version")
 @clipboard_output
-def sys():
-    """System information."""
-    return platform.system()
-
-
-@click.command(short_help="OS version")
-@clipboard_output
-def sysver():
+def version():
     """System release version."""
     return platform.version()

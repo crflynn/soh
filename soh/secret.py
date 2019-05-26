@@ -17,7 +17,7 @@ from soh.util import clipboard_output
 AMBIGUOUS_CHARACTERS = "Iil1Lo0O"
 
 
-@click.group(invoke_without_command=False, short_help="Secrets generators")
+@click.group(invoke_without_command=False, short_help="+ Secrets generators")
 def secret():
     """Secrets generation."""
     pass  # pragma: no cover

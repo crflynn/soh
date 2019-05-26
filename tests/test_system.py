@@ -5,9 +5,11 @@ import socket
 from uuid import getnode
 
 import vcr
+from click.testing import CliRunner
 
 from .common import compare
 from soh.util import COPIED_TO_CLIPBOARD_MESSAGE
+from soh.system import all_
 from soh.system import arch
 from soh.system import cores
 from soh.system import eip
@@ -15,10 +17,19 @@ from soh.system import ip
 from soh.system import mac
 from soh.system import machine
 from soh.system import node
+from soh.system import platform_
 from soh.system import proc
-from soh.system import sys
-from soh.system import sysver
+from soh.system import version
 from .test_util import check_clipboard_output
+
+
+def test_all():
+    runner = CliRunner()
+    args = []
+
+    result = runner.invoke(all_, args)
+
+    assert result.exit_code == 0
 
 
 # @check_clipboard_output
@@ -78,18 +89,18 @@ def test_node():  # , clip):
 
 
 # @check_clipboard_output
+def test_platform():  # , clip):
+    args = []
+    compare(platform_, args, platform.system())
+
+
+# @check_clipboard_output
 def test_proc():  # , clip):
     args = []
     compare(proc, args, platform.processor())
 
 
 # @check_clipboard_output
-def test_sys():  # , clip):
+def test_version():  # , clip):
     args = []
-    compare(sys, args, platform.system())
-
-
-# @check_clipboard_output
-def test_sysver():  # , clip):
-    args = []
-    compare(sysver, args, platform.version())
+    compare(version, args, platform.version())
