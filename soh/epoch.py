@@ -6,6 +6,7 @@ Entry point: $ soh epoch ms [OPTS]
 Entry point: $ soh epoch us [OPTS]
 Entry point: $ soh epoch ns [OPTS]
 """
+import sys
 import time
 
 import arrow
@@ -25,7 +26,7 @@ def epoch():
 @clipboard_output
 def s(float_):
     """Epoch time in seconds."""
-    value = time.time_ns() / 10 ** 9
+    value = time.time()
 
     if not float_:
         value = int(value)
@@ -38,7 +39,10 @@ def s(float_):
 @clipboard_output
 def ms(float_):
     """Epoch time in milliseconds."""
-    value = time.time_ns() / 10 ** 6
+    if sys.version_info < (3, 6):
+        value = time.time() * 10 ** 3
+    else:
+        value = time.time_ns() / 10 ** 6
 
     if not float_:
         value = int(value)
@@ -51,7 +55,10 @@ def ms(float_):
 @clipboard_output
 def us(float_):
     """Epoch time in microseconds."""
-    value = time.time_ns() / 10 ** 3
+    if sys.version_info < (3, 6):
+        value = time.time() * 10 ** 6
+    else:
+        value = time.time_ns() / 10 ** 3
 
     if not float_:
         value = int(value)
@@ -64,7 +71,10 @@ def us(float_):
 @clipboard_output
 def ns(float_):
     """Epoch time in nanoseconds."""
-    value = time.time_ns()
+    if sys.version_info < (3, 6):
+        value = time.time() * 10 ** 9
+    else:
+        value = time.time_ns()
 
     if not float_:
         value = int(value)

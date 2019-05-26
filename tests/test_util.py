@@ -62,7 +62,7 @@ def check_dummy(clip):
     return result
 
 
-@pytest.mark.skipif(os.getenv("TRAVIS") == "true")  # can't test clipboard in travis
+@pytest.mark.skipif(os.getenv("TRAVIS") == "true", reason="Travis can't use clipboard")
 def test_dummy():
     """Test the clipboard behavior serially."""
     for clip in [None, "-c", "--clip"]:
