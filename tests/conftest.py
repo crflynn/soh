@@ -56,6 +56,11 @@ def sample_b64(request):
     return request.param
 
 
+@pytest.fixture(params=[None, "-p", "--pad"])
+def pad(request):
+    return request.param
+
+
 # epoch
 @pytest.fixture(params=[None, "-f", "--float"])
 def float_(request):
@@ -71,6 +76,16 @@ def port_label(request):
 # datetime
 @pytest.fixture(params=[None, "-t"])
 def t(request):
+    return request.param
+
+
+@pytest.fixture(params=[None, "-tz"])
+def tz_label(request):
+    return request.param
+
+
+@pytest.fixture(params=["list", "EST", "not_a_timezone"])
+def tz(request):
     return request.param
 
 

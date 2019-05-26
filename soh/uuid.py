@@ -10,9 +10,9 @@ from soh.util import clipboard_output
 
 
 @click.command(short_help="Generate UUIDs")
-@click.option("-v", "--version", "uuid_version", default=4, show_default=True, help="uuid version")
-@click.option("-ns", "--namespace", "uuid_namespace", help="namespace (v3, v5) {dns, url, oid, x500}")
-@click.option("-n", "--name", "uuid_name", default="", help="name (v3, v5)")
+@click.option("-v", "--version", "uuid_version", default=4, show_default=True, help="uuid version {1, 3, 4, 5}")
+@click.option("-ns", "--namespace", "uuid_namespace", help="namespace (for v3, v5) {dns, url, oid, x500}")
+@click.option("-n", "--name", "uuid_name", default="", help="name (for v3, v5)")
 @click.option("-u", "--upper", is_flag=True, help="use upper case")
 @clipboard_output
 def uuid_(uuid_version, uuid_namespace, uuid_name, upper):

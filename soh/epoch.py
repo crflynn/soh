@@ -8,26 +8,16 @@ Entry point: $ soh epoch ns [OPTS]
 """
 import time
 
+import arrow
 import click
 
 from soh.util import clipboard_output
 
 
-# TODO consider `epoch` invoke without command = false
-
-
-@click.group(invoke_without_command=True, short_help="Epoch times")
-@click.option("-f", "--float", "float_", is_flag=True, default=False, help="return float value")
-@click.pass_context
-@clipboard_output
-def epoch(ctx, float_):
-    """Epoch time in seconds."""
-    if ctx.invoked_subcommand is None:
-        value = time.time_ns() / 10 ** 9
-        if not float_:
-            value = int(value)
-        return str(value)
-    return ""  # pragma: no cover
+@click.group(invoke_without_command=False, short_help="+ Epoch times")
+def epoch():
+    """Epoch times."""
+    pass  # pragma: no cover
 
 
 @epoch.command(short_help="epoch time seconds")
@@ -80,3 +70,18 @@ def ns(float_):
         value = int(value)
 
     return str(value)
+
+
+@epoch.command(name="from", short_help="epoch time from a timestamp")
+@click.option("-f", "--float", "float_", is_flag=True, default=False, help="return float value")
+@click.argument("datetime")
+@clipboard_output
+def from_(float_, datetime):
+    """Epoch time from a timestamp (in quotes)."""
+    try:
+        if float_:
+            return str(arrow.get(datetime).float_timestamp)
+        else:
+            return str(arrow.get(datetime).timestamp)
+    except Exception as exc:
+        raise click.ClickException(exc)
