@@ -124,3 +124,6 @@ dmypy.json
 
 # intellij
 .idea/
+
+# OSX
+.DS_Store

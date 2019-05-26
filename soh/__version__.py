@@ -2,7 +2,7 @@
 __title__ = "soh"
 __description__ = "Sleight of hand (soh) CLI tool."
 __url__ = "https://github.com/crflynn/soh"
-__version__ = "0.1.0"
+__version__ = "0.1.1"
 __author__ = "Christopher Flynn"
 __author_email__ = "crf204@gmail.com"
 __license__ = "MIT"
