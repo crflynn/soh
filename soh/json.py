@@ -1,4 +1,4 @@
-"""Base64 CLI functionality.
+"""JSON printing CLI functionality.
 
 Entry point: $ soh json [OPTS] <text>
 """

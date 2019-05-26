@@ -1,6 +1,8 @@
-"""System information.
+"""UTC Datetime information.
 
-Entry point: $ soh utcnow
+Entry point: $ soh now [OPTS]
+Entry point: $ soh time [OPTS]
+Entry point: $ soh today [OPTS]
 """
 import arrow
 from arrow.parser import ParserError
