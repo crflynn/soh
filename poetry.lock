@@ -445,8 +445,8 @@ idna = ">=2.0"
 multidict = ">=4.0"
 
 [metadata]
-content-hash = "3ad2b05f61e20170a97fffd70134ec0dd969dc2a3a0032eb7d329297634c4595"
-python-versions = "^3.6"
+content-hash = "9f203e1b1fd34bcdfe262e97b64983c811dc1ffbf2eb0a6a5617e389613b9f1a"
+python-versions = "^3.7"
 
 [metadata.hashes]
 apipkg = ["37228cda29411948b422fae072f57e31d3396d2ee1c9783775980ee9c9990af6", "58587dd4dc3daefad0487f6d9ae32b4542b185e1c36db6993290e7c41ca2b47c"]

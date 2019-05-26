@@ -24,7 +24,7 @@ description = ""
 authors = ["flynn <crf204@gmail.com>"]
 
 [tool.poetry.dependencies]
-python = "^3.6"
+python = "^3.7"
 click = "^7.0"
 pyperclip = "^1.7"
 requests = "^2.21"
