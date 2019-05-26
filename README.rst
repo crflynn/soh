@@ -14,9 +14,6 @@ To install ``soh`` use ``pip``.
     pip install soh
 
 
-# TODO brew tap
-
-
 Usage
 -----
 
@@ -27,32 +24,24 @@ The entry point for all commands is
     $ soh
     Usage: soh [OPTIONS] COMMAND [ARGS]...
 
-      Sleight of hand CLI tricks.
+      Sleight of hand CLI commands.
+
+      (+) indicates command group. Use the -c flag on most commands to copy
+      output to clipboard
 
     Options:
       -h, --help  Show this message and exit.
 
     Commands:
-      arch     OS version
-      b64      Base64 operations
-      cores    Number of cores
-      create   Helper file creations
-      eip      External IP address
-      epoch    Epoch times
-      ip       Local IP address
+      b64      + Base64 operations
+      create   + Create files
+      dt       + Datetimes
+      epoch    + Epoch times
       json     JSON printing
       jwt      Display JWT contents
-      mac      Local MAC address
-      machine  Machine information
-      node     OS version
-      now      UTC now
-      proc     Processor information
-      secret   Secrets generators
+      secret   + Secrets generators
       serve    Simple http server at current directory
-      sys      System information
-      sysver   OS version
-      time     UTC time
-      today    UTC date
+      sys      + System information
       uuid     Generate UUIDs
       version  soh CLI version
 
