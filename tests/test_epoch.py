@@ -1,3 +1,4 @@
+import sys
 import time
 
 import pytest
@@ -68,7 +69,11 @@ def check_epochs(func, float_, divisor):
     assert result.exit_code == 0
 
     output = result.output.rsplit(COPIED_TO_CLIPBOARD_MESSAGE)[0].replace("\n", "")
-    assert time.time_ns() / divisor - float(output) < 1 * 10 ** 9 / divisor
+    # assert less than one second has passed between now and invocation
+    if sys.version_info < (3, 6):
+        assert time.time() * 10 ** 9 / divisor - float(output) < 1 * 10 ** 9 / divisor
+    else:
+        assert time.time_ns() / divisor - float(output) < 1 * 10 ** 9 / divisor
 
     if float_ and func != ns:
         assert "." in output

@@ -1,11 +1,12 @@
+import os
 from functools import wraps
 
 import click
-from click.testing import CliRunner
 import pyperclip
 import pytest
 import requests
 import vcr
+from click.testing import CliRunner
 
 from soh.util import clipboard_output
 from soh.util import ensure_ok_response
@@ -61,6 +62,7 @@ def check_dummy(clip):
     return result
 
 
+@pytest.mark.skipif(os.getenv("TRAVIS") == "true", reason="Travis can't use clipboard")
 def test_dummy():
     """Test the clipboard behavior serially."""
     for clip in [None, "-c", "--clip"]:
