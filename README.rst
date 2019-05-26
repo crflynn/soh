@@ -1,6 +1,21 @@
 soh (sleight-of-hand)
 =====================
 
+|travis| |codecov| |pypi| |pyversions|
+
+
+.. |travis| image:: https://img.shields.io/travis/crflynn/soh.svg
+    :target: https://travis-ci.org/crflynn/soh
+
+.. |codecov| image:: https://codecov.io/gh/crflynn/soh/branch/master/graphs/badge.svg
+    :target: https://codecov.io/gh/crflynn/soh
+
+.. |pypi| image:: https://img.shields.io/pypi/v/soh.svg
+    :target: https://pypi.python.org/pypi/soh
+
+.. |pyversions| image:: https://img.shields.io/pypi/pyversions/soh.svg
+    :target: https://pypi.python.org/pypi/soh
+
 Sleight of hand, or ``soh``, is a command line tool that handles a lot of common tasks for developers. For the most part, it offers a convenient command line interface to a lot of standard library operations, such as base64 encoding, creating datetime strings, fetching system information, uuid generation, etc.
 
 
