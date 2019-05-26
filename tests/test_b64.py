@@ -5,17 +5,13 @@ from click.testing import CliRunner
 from soh.util import COPIED_TO_CLIPBOARD_MESSAGE
 from soh.b64 import d
 from soh.b64 import e
-from .test_util import check_clipboard_output
 
 
-# @check_clipboard_output
-def test_b64e(sample_text):  # , clip):
+def test_b64e(sample_text):
     runner = CliRunner()
 
     # build args
     args = [sample_text]
-    # if clip is not None:
-    #     args += [clip]
 
     result = runner.invoke(e, args)
 
@@ -27,14 +23,13 @@ def test_b64e(sample_text):  # , clip):
     return result
 
 
-# @check_clipboard_output
-def test_b64d(sample_b64):  # , clip):
+def test_b64d(sample_b64, pad):
     runner = CliRunner()
 
     # build args
     args = [sample_b64]
-    # if clip is not None:
-    #     args += [clip]
+    if pad is not None:
+        args += [pad]
 
     result = runner.invoke(d, args)
 
