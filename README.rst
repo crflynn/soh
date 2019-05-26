@@ -29,6 +29,13 @@ To install ``soh`` use ``pip``.
     pip install soh
 
 
+You can also install using `homebrew
+<https://brew.sh/>`_. To install use the command:
+
+.. code-block:: shell
+
+    brew install crflynn/formula/soh
+
 
 Usage
 -----
