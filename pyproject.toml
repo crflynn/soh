@@ -38,7 +38,6 @@ pytest-xdist = "^1.28"
 vcrpy = "^2.0"
 freezegun = "^0.3.11"
 twine = "^1.13"
-codecov = "^2.0"
 wheel = "^0.33.4"
 
 [build-system]
