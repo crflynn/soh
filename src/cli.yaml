@@ -7,19 +7,40 @@ about: |
       output to clipboard
 settings:
   - ArgRequiredElseHelp
+  - GlobalVersion
+args:
+  - clip:
+      short: c
+      long: clip
+      help: Copy output of subcommand to clipboard
 
 subcommands:
+  - b64:
+      about: Base64 encode/decode
+      settings:
+        - ArgRequiredElseHelp
+      subcommands:
+        - e:
+            about: Base64 encode
+            args:
+              - INPUT:
+                  help: Text to encode (uses clipboard if empty)
+                  required: false
+                  index: 1
+        - d:
+            about: Base64 decode
+            args:
+              - INPUT:
+                  help: Text to encode (uses clipboard if empty)
+                  required: false
+                  index: 1
   - uuid:
       about: Generate UUIDs
       args:
-        - clip:
-            short: c
-            long: clip
-            help: Copy output to clipboard
         - version:
             short: v
             takes_value: true
-            help: UUID version
+            help: UUID version (1, 3, 4, 5) default 4
         - namespace:
             short: s
             takes_value: true
@@ -34,8 +55,3 @@ subcommands:
             help: To upper case
   - version:
       about: Show soh version
-      args:
-        - clip:
-            short: c
-            long: clip
-            help: Copy output to clipboard

@@ -2,14 +2,16 @@ use clipboard::ClipboardContext;
 use clipboard::ClipboardProvider;
 use colored::*;
 
+use crate::error::BoxResult;
 use clap::ArgMatches;
 use std::process::exit;
 
 pub fn clip_result<'a>(
     matches: &'a ArgMatches,
-) -> impl Fn(fn(m: &'a ArgMatches) -> Result<String, String>) -> () + 'a {
-    let get_result = move |subcommand: fn(m: &'a ArgMatches) -> Result<String, String>| -> () {
-        let result = subcommand(matches);
+) -> impl Fn(fn(m: &'a ArgMatches) -> BoxResult<String>) -> () + 'a {
+    let get_result = move |subcommand: fn(m: &'a ArgMatches) -> BoxResult<String>| -> () {
+        let subcommand_options = matches.subcommand().1.unwrap();
+        let result = subcommand(subcommand_options);
 
         let output = match result {
             Err(msg) => {
