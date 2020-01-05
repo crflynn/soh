@@ -6,7 +6,7 @@ use crate::error::BoxResult;
 use clap::ArgMatches;
 use std::process::exit;
 
-pub fn clip_result<'a>(
+pub fn handle_result<'a>(
     matches: &'a ArgMatches,
 ) -> impl Fn(fn(m: &'a ArgMatches) -> BoxResult<String>) -> () + 'a {
     let get_result = move |subcommand: fn(m: &'a ArgMatches) -> BoxResult<String>| -> () {

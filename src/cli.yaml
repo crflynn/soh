@@ -1,10 +1,10 @@
 name: soh (sleight-of-hand)
-version: "0.1.0"
+version: "0.2.0"
 about: |
   Sleight of hand CLI commands.
 
-      (+) indicates command group. Use the -c flag on most commands to copy
-      output to clipboard
+  (+) indicates subcommand group. Use `soh -c` to copy output
+  of subcommand to clipboard.
 settings:
   - ArgRequiredElseHelp
   - GlobalVersion
@@ -16,7 +16,7 @@ args:
 
 subcommands:
   - b64:
-      about: Base64 encode/decode
+      about: (+) Base64 encode/decode
       settings:
         - ArgRequiredElseHelp
       subcommands:
@@ -34,6 +34,45 @@ subcommands:
                   help: Text to encode (uses clipboard if empty)
                   required: false
                   index: 1
+
+  - epoch:
+      about: (+) Epoch time
+      settings:
+        - ArgRequiredElseHelp
+      subcommands:
+        - s:
+            about: Epoch time in seconds
+        - m:
+            about: Epoch time in milliseconds
+        - u:
+            about: Epoch time in microseconds
+        - n:
+            about: Epoch time in nanoseconds
+
+  - sys:
+      about: (+) System information
+      settings:
+        - ArgRequiredElseHelp
+      subcommands:
+#        - arch:
+#            about: Processor architecture
+        - cores:
+            about: Number of cores
+        - eip:
+            about: External IP
+        - ip:
+            about: Network IP
+        - mac:
+            about: MAC address
+        - node:
+            about: Node name
+        - os:
+            about: Operating system
+#        - proc:
+#            about: Processor type
+        - osver:
+            about: Operating system version
+
   - uuid:
       about: Generate UUIDs
       args:
@@ -53,5 +92,6 @@ subcommands:
             short: u
             long: upper
             help: To upper case
+
   - version:
       about: Show soh version

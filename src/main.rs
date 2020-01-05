@@ -4,7 +4,9 @@ extern crate clap;
 use clap::App;
 
 mod b64;
+mod epoch;
 mod error;
+mod sys;
 mod util;
 mod uuid;
 mod version;
@@ -15,10 +17,12 @@ fn main() {
     let matches = &App::from_yaml(yaml).get_matches();
 
     let subcommand = match matches.subcommand_name() {
+        Some("b64") => b64::b64,
+        Some("epoch") => epoch::epoch,
+        Some("sys") => sys::sys,
         Some("uuid") => uuid::generate_uuid,
         Some("version") => version::show_version,
-        Some("b64") => b64::b64,
         _ => unreachable!(),
     };
-    util::clip_result(matches)(subcommand);
+    util::handle_result(matches)(subcommand);
 }
