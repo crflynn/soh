@@ -1,0 +1,41 @@
+name: soh (sleight-of-hand)
+version: "0.1.0"
+about: |
+  Sleight of hand CLI commands.
+
+      (+) indicates command group. Use the -c flag on most commands to copy
+      output to clipboard
+settings:
+  - ArgRequiredElseHelp
+
+subcommands:
+  - uuid:
+      about: Generate UUIDs
+      args:
+        - clip:
+            short: c
+            long: clip
+            help: Copy output to clipboard
+        - version:
+            short: v
+            takes_value: true
+            help: UUID version
+        - namespace:
+            short: s
+            takes_value: true
+            help: UUID v3/5 namespace (dns, oid, url, or x500)
+        - name:
+            short: n
+            takes_value: true
+            help: UUID v3/5 name
+        - upper:
+            short: u
+            long: upper
+            help: To upper case
+  - version:
+      about: Show soh version
+      args:
+        - clip:
+            short: c
+            long: clip
+            help: Copy output to clipboard

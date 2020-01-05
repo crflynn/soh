@@ -1,0 +1,12 @@
+[package]
+name = "soh"
+version = "0.2.0"
+authors = ["Christopher Flynn <crf204@gmail.com>"]
+edition = "2018"
+
+[dependencies]
+clap = {version = "~2.33.0", features = ["yaml"]}
+uuid = {version = "0.8.1", features = ["v1", "v3", "v4", "v5", "serde"] }
+clipboard = "0.5.0"
+colored = "1.8"
+mac_address = "1.0.3"
