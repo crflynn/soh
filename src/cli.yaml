@@ -50,6 +50,7 @@ subcommands:
             args:
               - length:
                   short: l
+                  long: length
                   takes_value: true
                   help: "Secret length (default: 32)"
         - u:
@@ -57,6 +58,7 @@ subcommands:
             args:
               - length:
                   short: l
+                  long: length
                   takes_value: true
                   help: "Secret length (default: 32)"
         - pw:
@@ -64,20 +66,82 @@ subcommands:
             args:
               - numbers:
                   short: n
+                  long: numbers
                   takes_value: true
                   help: "Quantity of numbers (default: 8)"
               - symbols:
                   short: s
+                  long: symbols
                   takes_value: true
                   help: "Quantity of symbols (default: 4)"
               - length:
                   short: l
+                  long: length
                   takes_value: true
                   help: "Secret length (default: 32)"
               - ambiguous:
                   short: a
+                  long: allow-ambiguous
                   takes_value: false
                   help: "Allow ambiguous characters [Iil1Lo0O] (default: false)"
+
+  - dt:
+      about: (+) Datetimes
+      settings:
+        - ArgRequiredElseHelp
+      subcommands:
+        - now:
+            about: Current datetime
+            args:
+              - timezone:
+                  short: t
+                  long: timezone
+                  takes_value: true
+                  help: Timezone name
+        - ts:
+            about: Current timestamp ISO8601
+            args:
+              - timezone:
+                  short: t
+                  long: timezone
+                  takes_value: true
+                  help: Timezone name
+              - seconds:
+                  short: s
+                  long: seconds-format
+                  takes_value: true
+                  help: "Seconds format [s, m, u, n] (default: m)"
+              - epoch:
+                  short: e
+                  long: from-epoch
+                  takes_value: true
+                  help: From epoch seconds
+        - time:
+            about: Current time
+            args:
+              - timezone:
+                  short: t
+                  long: timezone
+                  takes_value: true
+                  help: Timezone name
+              - epoch:
+                  short: e
+                  long: from-epoch
+                  takes_value: true
+                  help: From epoch seconds
+        - date:
+            about: Current date
+            args:
+              - timezone:
+                  short: t
+                  long: timezone
+                  takes_value: true
+                  help: Timezone name
+              - epoch:
+                  short: e
+                  long: from-epoch
+                  takes_value: true
+                  help: From epoch seconds
 
   - epoch:
       about: (+) Epoch time
@@ -122,14 +186,17 @@ subcommands:
       args:
         - version:
             short: v
+            long: version
             takes_value: true
             help: UUID version (1, 3, 4, 5) default 4
         - namespace:
             short: s
+            long: namespace
             takes_value: true
             help: UUID v3/5 namespace (dns, oid, url, or x500)
         - name:
             short: n
+            long: name
             takes_value: true
             help: UUID v3/5 name
         - upper:
