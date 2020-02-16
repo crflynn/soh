@@ -13,8 +13,13 @@ args:
       short: c
       long: clip
       help: Copy output of subcommand to clipboard
+  - suppress:
+      short: s
+      long: suppress
+      help: Suppress console output of subcommand
 
 subcommands:
+
   - b64:
       about: (+) Base64 encode/decode
       settings:
@@ -34,6 +39,31 @@ subcommands:
                   help: Text to encode (uses clipboard if empty)
                   required: false
                   index: 1
+
+  - secret:
+      about: (+) Generate secrets
+      settings:
+        - ArgRequiredElseHelp
+      subcommands:
+        - pw:
+            about: Generate a password
+            args:
+              - numbers:
+                  short: n
+                  takes_value: true
+                  help: "Quantity of numbers (default: 8)"
+              - symbols:
+                  short: s
+                  takes_value: true
+                  help: "Quantity of symbols (default: 4)"
+              - length:
+                  short: l
+                  takes_value: true
+                  help: "Password length (default: 32)"
+              - ambiguous:
+                  short: a
+                  takes_value: false
+                  help: "Allow ambiguous characters [Iil1Lo0O] (default: false)"
 
   - epoch:
       about: (+) Epoch time

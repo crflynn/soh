@@ -2,27 +2,37 @@
 extern crate clap;
 
 use clap::App;
+use std::process::exit;
 
 mod b64;
 mod epoch;
 mod error;
+mod output;
+mod secret;
 mod sys;
-mod util;
 mod uuid;
 mod version;
 
 fn main() {
-    // The YAML file is found relative to the current file, similar to how modules are found
     let yaml = load_yaml!("cli.yaml");
     let matches = &App::from_yaml(yaml).get_matches();
 
     let subcommand = match matches.subcommand_name() {
         Some("b64") => b64::b64,
         Some("epoch") => epoch::epoch,
+        Some("secret") => secret::secret,
         Some("sys") => sys::sys,
         Some("uuid") => uuid::generate_uuid,
         Some("version") => version::show_version,
         _ => unreachable!(),
     };
-    util::handle_result(matches)(subcommand);
+
+    let subcommand_matches = matches
+        .subcommand_matches(matches.subcommand_name().unwrap())
+        .unwrap();
+
+    match subcommand(subcommand_matches) {
+        Ok(message) => output::handle_result(message.as_str(), &matches),
+        Err(message) => output::handle_error(&message.to_string()),
+    };
 }

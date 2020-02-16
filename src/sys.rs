@@ -6,7 +6,8 @@ use sys_info;
 
 pub fn sys(matches: &ArgMatches) -> BoxResult<String> {
     match matches.subcommand_name() {
-//        Some("arch") => Ok(num_cpus::get().to_string()),  // conditional compile?
+        // conditional compile?
+        // Some("arch") => Ok(num_cpus::get().to_string()),
         Some("cores") => Ok(sys_info::cpu_num()?.to_string()),
         Some("eip") => Ok(reqwest::blocking::get("https://api.ipify.org/")?.text()?),
         Some("ip") => {
@@ -20,7 +21,8 @@ pub fn sys(matches: &ArgMatches) -> BoxResult<String> {
         Some("mac") => Ok(mac_address::get_mac_address().unwrap().unwrap().to_string()),
         Some("node") => Ok(sys_info::hostname()?),
         Some("os") => Ok(sys_info::os_type()?),
-        //        Some("proc") => Ok(cpuid::identify().unwrap().codename),  // cpuid wont compile
+        // cpuid crate wont compile
+        // Some("proc") => Ok(cpuid::identify().unwrap().codename),
         Some("osver") => Ok(sys_info::os_release()?),
         _ => unreachable!(),
     }
