@@ -45,6 +45,20 @@ subcommands:
       settings:
         - ArgRequiredElseHelp
       subcommands:
+        - h:
+            about: Generate a hex token
+            args:
+              - length:
+                  short: l
+                  takes_value: true
+                  help: "Secret length (default: 32)"
+        - u:
+            about: Generate a urlsafe token
+            args:
+              - length:
+                  short: l
+                  takes_value: true
+                  help: "Secret length (default: 32)"
         - pw:
             about: Generate a password
             args:
@@ -59,7 +73,7 @@ subcommands:
               - length:
                   short: l
                   takes_value: true
-                  help: "Password length (default: 32)"
+                  help: "Secret length (default: 32)"
               - ambiguous:
                   short: a
                   takes_value: false

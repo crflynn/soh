@@ -2,7 +2,6 @@ use clipboard::ClipboardContext;
 use clipboard::ClipboardProvider;
 use colored::*;
 
-use crate::error::BoxResult;
 use clap::ArgMatches;
 use std::process::exit;
 

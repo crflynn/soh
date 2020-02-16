@@ -2,7 +2,6 @@
 extern crate clap;
 
 use clap::App;
-use std::process::exit;
 
 mod b64;
 mod epoch;
