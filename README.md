@@ -36,6 +36,8 @@ FLAGS:
 
 SUBCOMMANDS:
     b64        (+) Base64 encode/decode
+    create     (+) Create files
+    dt         (+) Datetimes
     epoch      (+) Epoch time
     help       Prints this message or the help of the given subcommand(s)
     secret     (+) Generate secrets
