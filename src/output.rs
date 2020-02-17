@@ -5,7 +5,7 @@ use colored::*;
 use clap::ArgMatches;
 use std::process::exit;
 
-pub fn handle_result(output: &str, matches: &ArgMatches) -> () {
+pub fn handle_result(output: &str, matches: &ArgMatches) {
     if matches.is_present("clip") {
         let mut ctx: ClipboardContext = ClipboardProvider::new().unwrap();
         ctx.set_contents(output.to_owned()).unwrap();
@@ -13,10 +13,8 @@ pub fn handle_result(output: &str, matches: &ArgMatches) -> () {
             print!("{}", output.yellow());
             print!("{}", " (📋 Copied to clipboard.)\n".green())
         }
-    } else {
-        if !matches.is_present("suppress") {
-            println!("{}", output)
-        }
+    } else if !matches.is_present("suppress") {
+        println!("{}", output)
     }
 }
 

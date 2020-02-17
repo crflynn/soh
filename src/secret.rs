@@ -79,9 +79,10 @@ pub fn pw(l: i32, matches: &ArgMatches) -> BoxResult<String> {
         ));
     }
 
-    let allowed_characters = match matches.is_present("ambiguous") {
-        false => LETTERS.replace(&['I', 'i', 'l', '1', 'L', 'o', '0', 'O'][..], ""),
-        true => LETTERS.to_string(),
+    let allowed_characters = if matches.is_present("ambiguous") {
+        LETTERS.to_string()
+    } else {
+        LETTERS.replace(&['I', 'i', 'l', '1', 'L', 'o', '0', 'O'][..], "")
     }
     .to_string()
     .into_bytes();
