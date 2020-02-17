@@ -40,50 +40,33 @@ subcommands:
                   required: false
                   index: 1
 
-  - secret:
-      about: (+) Generate secrets
+  - create:
+      about: (+) Create files
       settings:
         - ArgRequiredElseHelp
       subcommands:
-        - h:
-            about: Generate a hex token
+        - gitignore:
+            about: Create .gitignore file
             args:
-              - length:
-                  short: l
-                  long: length
-                  takes_value: true
-                  help: "Secret length (default: 32)"
-        - u:
-            about: Generate a urlsafe token
+              - overwrite:
+                  short: o
+                  long: overwrite
+                  help: Overwrite existing file
+              - INPUT:
+                  help: Language
+                  required: true
+                  index: 1
+        - license:
+            about: Create LICENSE.txt file
             args:
-              - length:
-                  short: l
-                  long: length
-                  takes_value: true
-                  help: "Secret length (default: 32)"
-        - pw:
-            about: Generate a password
-            args:
-              - numbers:
-                  short: n
-                  long: numbers
-                  takes_value: true
-                  help: "Quantity of numbers (default: 8)"
-              - symbols:
-                  short: s
-                  long: symbols
-                  takes_value: true
-                  help: "Quantity of symbols (default: 4)"
-              - length:
-                  short: l
-                  long: length
-                  takes_value: true
-                  help: "Secret length (default: 32)"
-              - ambiguous:
-                  short: a
-                  long: allow-ambiguous
-                  takes_value: false
-                  help: "Allow ambiguous characters [Iil1Lo0O] (default: false)"
+              - overwrite:
+                  short: o
+                  long: overwrite
+                  help: Overwrite existing file
+              - INPUT:
+                  help: License type
+                  required: true
+                  index: 1
 
   - dt:
       about: (+) Datetimes
@@ -156,6 +139,51 @@ subcommands:
             about: Epoch time in microseconds
         - n:
             about: Epoch time in nanoseconds
+
+  - secret:
+      about: (+) Generate secrets
+      settings:
+        - ArgRequiredElseHelp
+      subcommands:
+        - h:
+            about: Generate a hex token
+            args:
+              - length:
+                  short: l
+                  long: length
+                  takes_value: true
+                  help: "Secret length (default: 32)"
+        - u:
+            about: Generate a urlsafe token
+            args:
+              - length:
+                  short: l
+                  long: length
+                  takes_value: true
+                  help: "Secret length (default: 32)"
+        - pw:
+            about: Generate a password
+            args:
+              - numbers:
+                  short: n
+                  long: numbers
+                  takes_value: true
+                  help: "Quantity of numbers (default: 8)"
+              - symbols:
+                  short: s
+                  long: symbols
+                  takes_value: true
+                  help: "Quantity of symbols (default: 4)"
+              - length:
+                  short: l
+                  long: length
+                  takes_value: true
+                  help: "Secret length (default: 32)"
+              - ambiguous:
+                  short: a
+                  long: allow-ambiguous
+                  takes_value: false
+                  help: "Allow ambiguous characters [Iil1Lo0O] (default: false)"
 
   - sys:
       about: (+) System information

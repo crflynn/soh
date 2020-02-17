@@ -4,6 +4,7 @@ extern crate clap;
 use clap::App;
 
 mod b64;
+mod create;
 mod datetime;
 mod epoch;
 mod error;
@@ -19,6 +20,7 @@ fn main() {
 
     let subcommand = match matches.subcommand_name() {
         Some("b64") => b64::b64,
+        Some("create") => create::create,
         Some("dt") => datetime::datetime,
         Some("epoch") => epoch::epoch,
         Some("secret") => secret::secret,

@@ -1,6 +1,6 @@
 use crate::error::BoxResult;
-use chrono::{SecondsFormat, Utc};
 use chrono::{NaiveDateTime, TimeZone};
+use chrono::{SecondsFormat, Utc};
 use chrono_tz::Tz;
 use clap::ArgMatches;
 use std::convert::TryFrom;
