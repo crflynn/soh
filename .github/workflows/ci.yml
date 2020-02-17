@@ -72,10 +72,18 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ubuntu-latest, windows-latest, macOS-latest]
+        os: [ubuntu-latest] #, windows-latest, macOS-latest]
     steps:
       # missing -lxcb-shape and -lxcb-xfixes
-      - run: apt install libxcb-composite0-dev
+      - name: install missing libs
+        if: matrix.os == 'ubuntu-latest'
+        run: sudo apt install libxcb-composite0-dev
+#      - name: install missing libs
+#        if: matrix.os == 'macOS-latest'
+#        run: brew install libxcb
+#      - name: install missing libs
+#        if: matrix.os == 'windows-latest'
+#        run: chocolately install libxcb
       - uses: actions/checkout@master
       - uses: actions-rs/toolchain@v1
         with:
