@@ -84,7 +84,6 @@ pub fn pw(l: i32, matches: &ArgMatches) -> BoxResult<String> {
     } else {
         LETTERS.replace(&['I', 'i', 'l', '1', 'L', 'o', '0', 'O'][..], "")
     }
-    .to_string()
     .into_bytes();
 
     let mut rng = thread_rng();
