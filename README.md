@@ -7,12 +7,6 @@ Sleight of hand, or `soh`, is a command line tool that handles a lot of common t
 
 To install `soh`... TODO
 
-You can also install using [homebrew](https://brew.sh/). To install use the command:
-
-```
-brew install crflynn/formula/soh
-```
-
 ## Usage
 
 The entry point for all commands is
@@ -58,14 +52,13 @@ USAGE:
     soh uuid [FLAGS] [OPTIONS]
 
 FLAGS:
-    -h, --help       Prints help information
-    -u, --upper      To upper case
-    -V, --version    Prints version information
+    -h, --help     Prints help information
+    -u, --upper    To upper case
 
 OPTIONS:
-    -n <name>             UUID v3/5 name
-    -s <namespace>        UUID v3/5 namespace (dns, oid, url, or x500)
-    -v <version>          UUID version (1, 3, 4, 5) default 4
+    -n, --name <name>              UUID v3/5 name
+    -s, --namespace <namespace>    UUID v3/5 namespace (dns, oid, url, or x500)
+    -v, --version <version>        UUID version (1, 3, 4, 5) default 4
 ```
 
 To copy the execution output of most commands to clipboard, use the `-c` or `--clip` command.
