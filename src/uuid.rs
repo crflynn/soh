@@ -37,7 +37,7 @@ fn generate_v1() -> BoxResult<String> {
     Ok(uuid.to_string())
 }
 
-fn generate_v3(namespace: Option<(&str)>, name: &str) -> BoxResult<String> {
+fn generate_v3(namespace: Option<&str>, name: &str) -> BoxResult<String> {
     let ns = get_namespace(namespace)?;
     let uuid = Uuid::new_v3(&ns, name.as_bytes());
     Ok(uuid.to_string())
@@ -47,13 +47,13 @@ fn generate_v4() -> BoxResult<String> {
     Ok(Uuid::new_v4().to_string())
 }
 
-fn generate_v5(namespace: Option<(&str)>, name: &str) -> BoxResult<String> {
+fn generate_v5(namespace: Option<&str>, name: &str) -> BoxResult<String> {
     let ns = get_namespace(namespace)?;
     let uuid = Uuid::new_v3(&ns, name.as_bytes());
     Ok(uuid.to_string())
 }
 
-fn get_namespace(namespace: Option<(&str)>) -> BoxResult<Uuid> {
+fn get_namespace(namespace: Option<&str>) -> BoxResult<Uuid> {
     match namespace {
         Some("dns") => Ok(Uuid::NAMESPACE_DNS),
         Some("oid") => Ok(Uuid::NAMESPACE_OID),

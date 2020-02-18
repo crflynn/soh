@@ -1,0 +1,126 @@
+name: ci
+
+on:
+  push:
+    branches:
+    - master
+  pull_request:
+
+jobs:
+
+  build-ubuntu:
+    name: Build ubuntu
+    runs-on: ubuntu-latest
+    steps:
+      # missing -lxcb-shape and -lxcb-xfixes
+      - name: Install libs
+        run: sudo apt install libxcb-composite0-dev
+      - name: Checkout
+        uses: actions/checkout@master
+      - name: Setup rust
+        uses: actions-rs/toolchain@v1
+        with:
+          profile: minimal
+          toolchain: stable
+          override: true
+      - name: Cargo check
+        uses: actions-rs/cargo@v1
+        with:
+          command: check
+      - name: Add rustfmt
+        run: rustup component add rustfmt
+      - name: Cargo fmt
+        uses: actions-rs/cargo@v1
+        with:
+          command: fmt
+          args: --all -- --check
+      - name: Cargo test
+        uses: actions-rs/cargo@v1
+        with:
+          command: test
+      - name: Cargo clippy
+        uses: actions-rs/cargo@v1
+        with:
+          command: clippy
+          args: -- -D warnings
+      - name: Cargo build
+        uses: actions-rs/cargo@v1
+        with:
+          command: build
+          args: --release --all-features
+  build-mac:
+    name: Build mac
+    runs-on: macOS-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@master
+      - name: Setup rust
+        uses: actions-rs/toolchain@v1
+        with:
+          profile: minimal
+          toolchain: stable
+          override: true
+      - name: Cargo check
+        uses: actions-rs/cargo@v1
+        with:
+          command: check
+      - name: Add rustfmt
+        run: rustup component add rustfmt
+      - name: Cargo fmt
+        uses: actions-rs/cargo@v1
+        with:
+          command: fmt
+          args: --all -- --check
+      - name: Cargo test
+        uses: actions-rs/cargo@v1
+        with:
+          command: test
+      - name: Cargo clippy
+        uses: actions-rs/cargo@v1
+        with:
+          command: clippy
+          args: -- -D warnings
+      - name: Cargo build
+        uses: actions-rs/cargo@v1
+        with:
+          command: build
+          args: --release --all-features
+
+# # libc doesn't work on windows (?)
+#  build-win:
+#    name: Build win
+#    runs-on: windows-latest
+#    steps:
+#      - name: Checkout
+#        uses: actions/checkout@master
+#      - name: Setup rust
+#        uses: actions-rs/toolchain@v1
+#        with:
+#          profile: minimal
+#          toolchain: stable
+#          override: true
+#      - name: Cargo check
+#        uses: actions-rs/cargo@v1
+#        with:
+#          command: check
+#      - name: Add rustfmt
+#        run: rustup component add rustfmt
+#      - name: Cargo fmt
+#        uses: actions-rs/cargo@v1
+#        with:
+#          command: fmt
+#          args: --all -- --check
+#      - name: Cargo test
+#        uses: actions-rs/cargo@v1
+#        with:
+#          command: test
+#      - name: Cargo clippy
+#        uses: actions-rs/cargo@v1
+#        with:
+#          command: clippy
+#          args: -- -D warnings
+#      - name: Cargo build
+#        uses: actions-rs/cargo@v1
+#        with:
+#          command: build
+#          args: --release --all-features

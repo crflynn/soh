@@ -49,5 +49,5 @@ pub fn datetime(matches: &ArgMatches) -> BoxResult<String> {
         _ => unreachable!(),
     };
 
-    Ok(result.to_string())
+    Ok(result)
 }
