@@ -54,7 +54,7 @@ jobs:
           command: build
           args: --release --target $TARGET
       - name: Push artifact
-      - uses: actions/upload-artifact@v1
+        uses: actions/upload-artifact@v1
         with:
           name: $(cargo pkgid | sed 's/^.*\/\([a-z]*\)#\([0-9.]*\)$/\1-\2/')-$TARGET
           path: target/$TARGET/release/soh
@@ -99,7 +99,7 @@ jobs:
           command: build
           args: --release --target $TARGET
       - name: Push artifact
-      - uses: actions/upload-artifact@v1
+        uses: actions/upload-artifact@v1
         with:
           name: $(cargo pkgid | sed 's/^.*\/\([a-z]*\)#\([0-9.]*\)$/\1-\2/')-$TARGET
           path: target/$TARGET/release/soh
