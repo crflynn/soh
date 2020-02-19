@@ -52,11 +52,11 @@ jobs:
         uses: actions-rs/cargo@v1
         with:
           command: build
-          args: --release --target ${{ env.TARGET }}
+          args: --release --target ${{ env.TARGET }} --features vendored-openssl
       - name: Push artifact
         uses: actions/upload-artifact@v1
         with:
-          name: $(cargo pkgid | sed 's/^.*\/\([a-z]*\)#\([0-9.]*\)$/\1-\2/')-${{ env.TARGET }}
+          name: soh-${{ env.TARGET }}
           path: target/${{ env.TARGET }}/release/soh
   build-mac:
     name: Build mac
@@ -101,7 +101,7 @@ jobs:
       - name: Push artifact
         uses: actions/upload-artifact@v1
         with:
-          name: $(cargo pkgid | sed 's/^.*\/\([a-z]*\)#\([0-9.]*\)$/\1-\2/')-${{ env.TARGET }}
+          name: soh-${{ env.TARGET }}
           path: target/${{ env.TARGET }}/release/soh
 
 # # libc doesn't work on windows (?)
