@@ -12,7 +12,7 @@ jobs:
     name: Build ubuntu
     runs-on: ubuntu-latest
     env:
-      TARGET=x86_64-unknown-linux-musl
+      TARGET: x86_64-unknown-linux-musl
     steps:
       # missing -lxcb-shape and -lxcb-xfixes
       # add musl tools for build
