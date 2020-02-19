@@ -52,12 +52,12 @@ jobs:
         uses: actions-rs/cargo@v1
         with:
           command: build
-          args: --release --target $TARGET
+          args: --release --target ${{ env.TARGET }}
       - name: Push artifact
         uses: actions/upload-artifact@v1
         with:
-          name: $(cargo pkgid | sed 's/^.*\/\([a-z]*\)#\([0-9.]*\)$/\1-\2/')-$TARGET
-          path: target/$TARGET/release/soh
+          name: $(cargo pkgid | sed 's/^.*\/\([a-z]*\)#\([0-9.]*\)$/\1-\2/')-${{ env.TARGET }}
+          path: target/${{ env.TARGET }}/release/soh
   build-mac:
     name: Build mac
     runs-on: macOS-latest
@@ -97,12 +97,12 @@ jobs:
         uses: actions-rs/cargo@v1
         with:
           command: build
-          args: --release --target $TARGET
+          args: --release --target ${{ env.TARGET }}
       - name: Push artifact
         uses: actions/upload-artifact@v1
         with:
-          name: $(cargo pkgid | sed 's/^.*\/\([a-z]*\)#\([0-9.]*\)$/\1-\2/')-$TARGET
-          path: target/$TARGET/release/soh
+          name: $(cargo pkgid | sed 's/^.*\/\([a-z]*\)#\([0-9.]*\)$/\1-\2/')-${{ env.TARGET }}
+          path: target/${{ env.TARGET }}/release/soh
 
 # # libc doesn't work on windows (?)
 #  build-win:
