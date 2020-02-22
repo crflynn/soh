@@ -8,112 +8,27 @@ on:
 
 jobs:
 
-  build-ubuntu:
-    name: Build ubuntu
-    runs-on: ubuntu-latest
-    env:
-      TARGET: x86_64-unknown-linux-musl
-      PKG_CONFIG_ALLOW_CROSS: 1
-    steps:
-      # missing -lxcb-shape and -lxcb-xfixes
-      # add musl tools for build
-      - name: Install libs
-        run: sudo apt install libxcb-composite0-dev musl-tools
-      - name: Checkout
-        uses: actions/checkout@master
-      - name: Add target
-        run: rustup target add ${{ env.TARGET }}
-      - name: Setup rust
-        uses: actions-rs/toolchain@v1
-        with:
-          profile: minimal
-          toolchain: stable
-          override: true
-      - name: Add rustfmt
-        run: rustup component add rustfmt
-      - name: Cargo fmt
-        uses: actions-rs/cargo@v1
-        with:
-          command: fmt
-          args: --all -- --check
-      - name: Cargo test
-        uses: actions-rs/cargo@v1
-        with:
-          command: test
-      - name: Cargo clippy
-        uses: actions-rs/cargo@v1
-        with:
-          command: clippy
-          args: -- -D warnings
-      - name: Cargo build
-        uses: actions-rs/cargo@v1
-        with:
-          command: build
-          args: --release --target ${{ env.TARGET }} --all-features
-      - name: Push artifact
-        uses: actions/upload-artifact@v1
-        with:
-          name: soh-${{ env.TARGET }}
-          path: target/${{ env.TARGET }}/release/soh
-  build-mac:
-    name: Build mac
-    runs-on: macOS-latest
-    env:
-      MACOSX_DEPLOYMENT_TARGET: 10.7
-      TARGET: x86_64-apple-darwin
-    steps:
-      - name: Checkout
-        uses: actions/checkout@master
-      - name: Setup rust
-        uses: actions-rs/toolchain@v1
-        with:
-          profile: minimal
-          toolchain: stable
-          override: true
-      - name: Add rustfmt
-        run: rustup component add rustfmt
-      - name: Cargo fmt
-        uses: actions-rs/cargo@v1
-        with:
-          command: fmt
-          args: --all -- --check
-      - name: Cargo test
-        uses: actions-rs/cargo@v1
-        with:
-          command: test
-      - name: Cargo clippy
-        uses: actions-rs/cargo@v1
-        with:
-          command: clippy
-          args: -- -D warnings
-      - name: Cargo build
-        uses: actions-rs/cargo@v1
-        with:
-          command: build
-          args: --release --target ${{ env.TARGET }}
-      - name: Push artifact
-        uses: actions/upload-artifact@v1
-        with:
-          name: soh-${{ env.TARGET }}
-          path: target/${{ env.TARGET }}/release/soh
-
-# # libc doesn't work on windows (?)
-#  build-win:
-#    name: Build win
-#    runs-on: windows-latest
+#  build-ubuntu:
+#    name: Build ubuntu
+#    runs-on: ubuntu-latest
+#    env:
+#      TARGET: x86_64-unknown-linux-musl
+#      PKG_CONFIG_ALLOW_CROSS: 1
 #    steps:
+#      # missing -lxcb-shape and -lxcb-xfixes
+#      # add musl tools for build
+#      - name: Install libs
+#        run: sudo apt install libxcb-composite0-dev musl-tools
 #      - name: Checkout
 #        uses: actions/checkout@master
+#      - name: Add target
+#        run: rustup target add ${{ env.TARGET }}
 #      - name: Setup rust
 #        uses: actions-rs/toolchain@v1
 #        with:
 #          profile: minimal
 #          toolchain: stable
 #          override: true
-#      - name: Cargo check
-#        uses: actions-rs/cargo@v1
-#        with:
-#          command: check
 #      - name: Add rustfmt
 #        run: rustup component add rustfmt
 #      - name: Cargo fmt
@@ -134,4 +49,90 @@ jobs:
 #        uses: actions-rs/cargo@v1
 #        with:
 #          command: build
-#          args: --release --all-features
+#          args: --release --target ${{ env.TARGET }} --all-features
+#      - name: Push artifact
+#        uses: actions/upload-artifact@v1
+#        with:
+#          name: soh-${{ env.TARGET }}
+#          path: target/${{ env.TARGET }}/release/soh
+#
+#  build-mac:
+#    name: Build mac
+#    runs-on: macOS-latest
+#    env:
+#      MACOSX_DEPLOYMENT_TARGET: 10.7
+#      TARGET: x86_64-apple-darwin
+#    steps:
+#      - name: Checkout
+#        uses: actions/checkout@master
+#      - name: Setup rust
+#        uses: actions-rs/toolchain@v1
+#        with:
+#          profile: minimal
+#          toolchain: stable
+#          override: true
+#      - name: Add rustfmt
+#        run: rustup component add rustfmt
+#      - name: Cargo fmt
+#        uses: actions-rs/cargo@v1
+#        with:
+#          command: fmt
+#          args: --all -- --check
+#      - name: Cargo test
+#        uses: actions-rs/cargo@v1
+#        with:
+#          command: test
+#      - name: Cargo clippy
+#        uses: actions-rs/cargo@v1
+#        with:
+#          command: clippy
+#          args: -- -D warnings
+#      - name: Cargo build
+#        uses: actions-rs/cargo@v1
+#        with:
+#          command: build
+#          args: --release --target ${{ env.TARGET }}
+#      - name: Push artifact
+#        uses: actions/upload-artifact@v1
+#        with:
+#          name: soh-${{ env.TARGET }}
+#          path: target/${{ env.TARGET }}/release/soh
+
+  build-win:
+    name: Build win
+    runs-on: windows-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@master
+      - name: Setup rust
+        uses: actions-rs/toolchain@v1
+        with:
+          profile: minimal
+          toolchain: stable
+          override: true
+      - name: Add rustfmt
+        run: rustup component add rustfmt
+      - name: Cargo fmt
+        uses: actions-rs/cargo@v1
+        with:
+          command: fmt
+          args: --all -- --check
+      - name: Cargo test
+        uses: actions-rs/cargo@v1
+        with:
+          command: test
+      - name: Cargo clippy
+        uses: actions-rs/cargo@v1
+        with:
+          command: clippy
+          args: -- -D warnings
+      - name: Cargo build
+        uses: actions-rs/cargo@v1
+        with:
+          command: build
+          args: --release --all-features
+#      - name: Push artifact
+#        uses: actions/upload-artifact@v1
+#        with:
+#          name: soh-${{ env.TARGET }}
+#          path: target/${{ env.TARGET }}/release/soh
