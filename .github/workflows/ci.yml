@@ -22,7 +22,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@master
       - name: Add target
-        run: rustup target add $TARGET
+        run: rustup target add ${{ env.TARGET }}
       - name: Setup rust
         uses: actions-rs/toolchain@v1
         with:
