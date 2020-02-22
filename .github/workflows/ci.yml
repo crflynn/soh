@@ -18,7 +18,7 @@ jobs:
       # missing -lxcb-shape and -lxcb-xfixes
       # add musl tools for build
       - name: Install libs
-        run: sudo apt install libxcb-composite0-dev musl-tools pkg-config libssl-dev
+        run: sudo apt install libxcb-composite0-dev musl-tools
       - name: Checkout
         uses: actions/checkout@master
       - name: Add target
