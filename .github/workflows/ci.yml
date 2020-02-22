@@ -54,6 +54,7 @@ jobs:
         with:
           command: build
           args: --release --target ${{ env.TARGET }}
+          use-cross: true
       - name: Push artifact
         uses: actions/upload-artifact@v1
         with:
