@@ -104,12 +104,11 @@ jobs:
     env:
       VCPKGRS_DYNAMIC: 1
       TARGET: x86_64-pc-windows-msvc
+      OPENSSL_DIR: C:\Program Files\OpenSSL
     steps:
       # add openssl
       - name: Install libs
-        run: |
-          vcpkg integrate install
-#          vcpkg install openssl-windows:x64-windows
+        run: vcpkg integrate install
       - name: Checkout
         uses: actions/checkout@master
       - name: Setup rust
