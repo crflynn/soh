@@ -102,6 +102,10 @@ jobs:
     name: Build win
     runs-on: windows-latest
     steps:
+      # missing -lxcb-shape and -lxcb-xfixes
+      # add musl tools for build
+      - name: Install libs
+        run: vcpkg integrate install
       - name: Checkout
         uses: actions/checkout@master
       - name: Setup rust
