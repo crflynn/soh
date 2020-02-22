@@ -109,7 +109,7 @@ jobs:
       - name: Install libs
         run: |
           vcpkg integrate install
-          vcpkg install openssl-windows:x64-windows
+#          vcpkg install openssl-windows:x64-windows
       - name: Checkout
         uses: actions/checkout@master
       - name: Setup rust
