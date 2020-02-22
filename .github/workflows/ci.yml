@@ -101,11 +101,14 @@ jobs:
   build-win:
     name: Build win
     runs-on: windows-latest
+    env:
+      VCPKGRS_DYNAMIC: 1
     steps:
       # missing -lxcb-shape and -lxcb-xfixes
       # add musl tools for build
       - name: Install libs
-        run: vcpkg integrate install; vcpkg install openssl-windows:x64-windows
+        run: |
+          vcpkg install openssl-windows:x64-windows
       - name: Checkout
         uses: actions/checkout@master
       - name: Setup rust
