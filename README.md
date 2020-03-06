@@ -5,7 +5,7 @@ Sleight of hand, or `soh`, is a command line tool that handles a lot of common t
 
 ## Installation
 
-To install `soh`... TODO
+To install `soh`, run ``brew install crflynn/formula/soh``
 
 ## Usage
 
