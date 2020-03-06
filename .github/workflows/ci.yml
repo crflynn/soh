@@ -53,7 +53,7 @@ jobs:
       - name: Push artifact
         uses: actions/upload-artifact@v1
         with:
-          name: soh-${{ env.TARGET }}
+          name: ${{ env.TARGET }}
           path: target/${{ env.TARGET }}/release/soh
 
   build-mac:
@@ -95,7 +95,7 @@ jobs:
       - name: Push artifact
         uses: actions/upload-artifact@v1
         with:
-          name: soh-${{ env.TARGET }}
+          name: ${{ env.TARGET }}
           path: target/${{ env.TARGET }}/release/soh
 
 # # unable to get openssl to be picked up by cargo
@@ -143,5 +143,5 @@ jobs:
 #      - name: Push artifact
 #        uses: actions/upload-artifact@v1
 #        with:
-#          name: soh-${{ env.TARGET }}
+#          name: ${{ env.TARGET }}
 #          path: target/${{ env.TARGET }}/release/soh
