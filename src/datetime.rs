@@ -11,10 +11,7 @@ pub fn datetime(matches: &ArgMatches) -> BoxResult<String> {
         .unwrap();
 
     let timezone = subcommand_matches.value_of("timezone").unwrap_or("UTC");
-    let tz = match timezone.parse::<Tz>() {
-        Ok(v) => v,
-        Err(e) => return Err(Box::try_from(e).unwrap()),
-    };
+    let tz = timezone.parse::<Tz>()?;
 
     let seconds_format = subcommand_matches.value_of("seconds").unwrap_or("m");
     let sf = match seconds_format {
