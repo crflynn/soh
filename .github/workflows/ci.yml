@@ -43,7 +43,6 @@ jobs:
           key: ${{ runner.os }}-cargo-registry-${{ hashFiles('**/Cargo.lock') }}
           restore-keys: |
             ${{ runner.os }}-cargo-registry-
-            ${{ runner.os }}-
       - name: Cache cargo index
         uses: actions/cache@v1
         with:
@@ -51,7 +50,6 @@ jobs:
           key: ${{ runner.os }}-cargo-index-${{ hashFiles('**/Cargo.lock') }}
           restore-keys: |
             ${{ runner.os }}-cargo-index-
-            ${{ runner.os }}-
       - name: Cargo test
         uses: actions-rs/cargo@v1
         with:
@@ -68,7 +66,6 @@ jobs:
           key: ${{ runner.os }}-cargo-build-target-${{ hashFiles('**/Cargo.lock') }}
           restore-keys: |
             ${{ runner.os }}-cargo-build-target-
-            ${{ runner.os }}-
       - name: Cargo build
         uses: actions-rs/cargo@v1
         with:
@@ -109,7 +106,6 @@ jobs:
           key: ${{ runner.os }}-cargo-registry-${{ hashFiles('**/Cargo.lock') }}
           restore-keys: |
             ${{ runner.os }}-cargo-registry-
-            ${{ runner.os }}-
       - name: Cache cargo index
         uses: actions/cache@v1
         with:
@@ -117,7 +113,6 @@ jobs:
           key: ${{ runner.os }}-cargo-index-${{ hashFiles('**/Cargo.lock') }}
           restore-keys: |
             ${{ runner.os }}-cargo-index-
-            ${{ runner.os }}-
       - name: Cargo test
         uses: actions-rs/cargo@v1
         with:
@@ -134,7 +129,6 @@ jobs:
           key: ${{ runner.os }}-cargo-build-target-${{ hashFiles('**/Cargo.lock') }}
           restore-keys: |
             ${{ runner.os }}-cargo-build-target-
-            ${{ runner.os }}-
       - name: Cargo build
         uses: actions-rs/cargo@v1
         with:
