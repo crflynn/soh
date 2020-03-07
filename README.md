@@ -4,7 +4,6 @@
 
 Sleight of hand, or `soh`, is a command line tool that handles a lot of common tasks for developers. For the most part, it offers a convenient command line interface to a lot of standard library operations, such as base64 encoding, creating datetime strings, fetching system information, uuid generation, etc.
 
-
 ## Installation
 
 To install `soh`, run ``brew install crflynn/formula/soh``
